@@ -1,0 +1,23 @@
+.bi {
+  font-size: 30px;
+}
+
+.card-custom {
+  transition: all 0.5s;
+}
+
+.card-custom:hover {
+  transform: scale(1.05);
+}
+
+/* Client - Detail Proyek Page */
+.foto-card .card-body a {
+  display: inline-block;
+}
+.foto-card .card-body a img {
+  transition: all 0.9s;
+  border-radius: 10px;
+}
+.foto-card .card-body a:hover > img {
+  transform: scale(0.9);
+}

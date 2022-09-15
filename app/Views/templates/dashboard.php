@@ -47,6 +47,9 @@
             case "admin":
                 $sidebarFile = "sidebarAdmin";
                 break;
+            case "sa":
+                $sidebarFile = "sidebarSA";
+                break;
         }
         ?>
         <!-- Sidebar -->

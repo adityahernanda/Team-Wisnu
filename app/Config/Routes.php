@@ -45,6 +45,17 @@ $routes->group('dashboard', function ($routes) {
         $routes->get('pembayaran', 'ClientDashboard::pembayaran');
         $routes->get('profile', 'ClientDashboard::profile');
     });
+    $routes->group('sa', function ($routes) {
+        $routes->get('/', 'SuperAdminDashboard::index');
+        $routes->get('proyek', 'SuperAdminDashboard::proyek');
+        $routes->get('proyek/(:any)', 'SuperAdminDashboard::proyek/$1');
+        $routes->get('proyek/(:any)/(:any)', 'SuperAdminDashboard::proyek/$1/$2');
+        $routes->get('pembayaran', 'SuperAdminDashboard::pembayaran');
+        $routes->get('pembayaran/(:any)', 'SuperAdminDashboard::pembayaran/$1');
+        $routes->get('portofolio', 'SuperAdminDashboard::portofolio');
+        $routes->get('pengguna', 'SuperAdminDashboard::pengguna');
+        $routes->get('profile', 'SuperAdminDashboard::profile');
+    });
     $routes->group('admin', function ($routes) {
         $routes->get('/', 'AdminDashboard::index');
         $routes->get('proyek', 'AdminDashboard::proyek');

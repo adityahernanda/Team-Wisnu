@@ -30,42 +30,42 @@
                             <td>Pemasangan Ubin Ruang Tamu</td>
                             <td>2011/04/25</td>
                             <td>5.000.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohId') ?>" class="btn btn-danger">Detail</a></td>
+                            <td><a href="<?= base_url('/dashboard/client/proyek/contohIdProyek/idProgress') ?>" class="btn btn-danger">Detail</a></td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>Pemasangan Titik Lampu</td>
                             <td>2022/04/25</td>
                             <td>1.500.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohId') ?>" class="btn btn-danger">Detail</a></td>
+                            <td><a href="<?= base_url('/dashboard/client/proyek/contohIdProyek/idProgress') ?>" class="btn btn-danger">Detail</a></td>
                         </tr>
                         <tr>
                             <td>3</td>
                             <td>Pengecatan Dinding Kamar Tidur</td>
                             <td>2015/04/25</td>
                             <td>8.000.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohId') ?>" class="btn btn-danger">Detail</a></td>
+                            <td><a href="<?= base_url('/dashboard/client/proyek/contohIdProyek/idProgress') ?>" class="btn btn-danger">Detail</a></td>
                         </tr>
                         <tr>
                             <td>4</td>
                             <td>Las Pagar Depan</td>
                             <td>2020/04/25</td>
                             <td>2.000.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohId') ?>" class="btn btn-danger">Detail</a></td>
+                            <td><a href="<?= base_url('/dashboard/client/proyek/contohIdProyek/idProgress') ?>" class="btn btn-danger">Detail</a></td>
                         </tr>
                         <tr>
                             <td>5</td>
                             <td>Pemasangan Ubin Ruang Tamu</td>
                             <td>2011/04/25</td>
                             <td>5.000.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohId') ?>" class="btn btn-danger">Detail</a></td>
+                            <td><a href="<?= base_url('/dashboard/client/proyek/contohIdProyek/idProgress') ?>" class="btn btn-danger">Detail</a></td>
                         </tr>
                         <tr>
                             <td>6</td>
                             <td>Pemasangan Ubin Ruang Tamu</td>
                             <td>2011/04/25</td>
                             <td>5.000.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohId') ?>" class="btn btn-danger">Detail</a></td>
+                            <td><a href="<?= base_url('/dashboard/client/proyek/contohIdProyek/idProgress') ?>" class="btn btn-danger">Detail</a></td>
                         </tr>
 
                     </tbody>

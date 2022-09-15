@@ -8,11 +8,11 @@
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
     </div>
 
-    <!-- Rincian RAB Card -->
+    <!-- Rincian Pembayaran Card -->
     <div class="card shadow mb-4">
         <!-- Card Header - Accordion -->
         <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-            <h6 class="m-0 font-weight-bold text-primary">Rincian RAB - Rancang Anggaran Belanja </h6>
+            <h6 class="m-0 font-weight-bold text-primary">Rincian Pembayaran</h6>
         </a>
         <!-- Card Content - Collapse -->
         <div class="collapse show" id="collapseCardExample">
@@ -78,7 +78,7 @@
 
                 </div> <!-- Akhir ROW -->
 
-                <a href="<?= base_url('/dashboard/client/rab') ?>" class="btn btn-danger">Detail RAB</a>
+                <a href="<?= base_url('/dashboard/client/pembayaran') ?>" class="btn btn-danger">Detail Pembayaran</a>
 
             </div>
         </div>
@@ -205,50 +205,61 @@
         </div>
     </div>
 
-    <!-- Proyek Tabel -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Progress Proyek</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTables" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama Progress</th>
-                            <th>Tanggal Progress</th>
-                            <th>Biaya Keluar</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Pemasangan Ubin Ruang Tamu</td>
-                            <td>2011/04/25</td>
-                            <td>5.000.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohId') ?>" class="btn btn-danger">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Pemasangan Titik Lampu</td>
-                            <td>2022/04/25</td>
-                            <td>1.500.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohId') ?>" class="btn btn-danger">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Pengecatan Dinding Kamar Tidur</td>
-                            <td>2015/04/25</td>
-                            <td>8.000.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohId') ?>" class="btn btn-danger">Detail</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+    <!-- Daftar Proyek -->
+    <div class="tab-pane fade show active" id="nav-daftarProyek" role="tabpanel" aria-labelledby="nav-daftarProyek-tab">
+
+        <!-- Proyek Tabel -->
+        <div class="card shadow mb-4 gap-3">
+            <div class="card-header">
+                Daftar Proyek
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTables" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Proyek</th>
+                                <th>Tanggal</th>
+                                <th>Lokasi</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Proyek 1</td>
+                                <td>17/07/2022</td>
+                                <td>Wiyung</td>
+                                <td class="text-center">
+                                    <a href="<?= base_url('/dashboard/client/proyek/1') ?>" class="btn btn-primary">Detail</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Proyek 2</td>
+                                <td>11/09/2022</td>
+                                <td>Waru Gunung</td>
+                                <td class="text-center">
+                                    <a href="<?= base_url('/dashboard/client/proyek/1') ?>" class="btn btn-primary">Detail</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Proyek 3</td>
+                                <td>1/01/2023</td>
+                                <td>Karang Pilang</td>
+                                <td class="text-center">
+                                    <a href="<?= base_url('/dashboard/client/proyek/1') ?>" class="btn btn-primary">Detail</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <a href="<?= base_url('/dashboard/client/proyek') ?>" class="btn btn-danger">Show More...</a>
             </div>
         </div>
+
     </div>
 
 </div>

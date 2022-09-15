@@ -11,16 +11,23 @@ class ClientDashboard extends BaseController
         return view('dashboard/client/main');
     }
 
-    public function proyek($id = null)
+    public function proyek($idProyek = null, $idProgress = null)
     {
-        if ($id) {
+        if ($idProyek && $idProgress) {
             return view('dashboard/client/detail_proyek');
+        } else if ($idProyek) {
+            return view('dashboard/client/proyek');
         }
-        return view('dashboard/client/proyek');
+        return view('dashboard/client/daftar_proyek');
     }
 
-    public function rab()
+    public function pembayaran()
     {
-        return view('dashboard/client/rab');
+        return view('dashboard/client/pembayaran');
+    }
+
+    public function profile()
+    {
+        return view('dashboard/client/profile');
     }
 }

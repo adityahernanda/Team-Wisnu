@@ -40,7 +40,7 @@
         <!-- Sidebar -->
 
         <!-- End of Sidebar -->
-        <?= $this->include('inc/sidebarDashboard') ?>
+        <?= $this->include('inc/sidebarClient') ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 

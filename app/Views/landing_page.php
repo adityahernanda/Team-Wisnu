@@ -78,7 +78,10 @@
                                             <label class="form-check-label" for="rememberMe">Remember me</label>
                                         </div>
                                         <!-- <button type="login" class="btn btn-danger">Login</button> -->
-                                        <a href="<?= base_url('/dashboard/client') ?>" class="btn btn-danger">Login</a>
+                                        <a href="loginAdmin.html" class="btn btn-danger mx-2 my-2">Login
+                                            Admin</a>
+                                        <a href="view-client/clientIndex.html" class="btn btn-danger mx-2 my-2">Login
+                                            Client</a>
                                     </form>
                                 </div>
                             </div>

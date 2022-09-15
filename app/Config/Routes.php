@@ -41,7 +41,9 @@ $routes->group('dashboard', function ($routes) {
         $routes->get('/', 'ClientDashboard::index');
         $routes->get('proyek', 'ClientDashboard::proyek');
         $routes->get('proyek/(:any)', 'ClientDashboard::proyek/$1');
-        $routes->get('rab', 'ClientDashboard::rab');
+        $routes->get('proyek/(:any)/(:any)', 'ClientDashboard::proyek/$1/$2');
+        $routes->get('pembayaran', 'ClientDashboard::pembayaran');
+        $routes->get('profile', 'ClientDashboard::profile');
     });
 });
 

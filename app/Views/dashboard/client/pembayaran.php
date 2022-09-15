@@ -5,15 +5,15 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">RAB - Rancang Anggaran Biaya</h1>
+        <h1 class="h3 mb-0 text-gray-800">Informasi Pembayaran</h1>
     </div>
 
     <div class="row">
         <div class="col-xl-5">
-            <!-- Rincian RAB Card -->
+            <!-- Rincian Pembayaran Card -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Rincian RAB</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Rincian Pembayaran</h6>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -94,7 +94,7 @@
         </div>
 
         <div class="col-xl-7">
-            <!-- RAB Tabel -->
+            <!-- Pembayaran Tabel -->
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <div class="table-responsive">
@@ -131,8 +131,9 @@
                     </div>
                 </div>
             </div>
+            <p>File Rancang Bangunan</p>
+            <a href="" class="btn btn-outline-primary mb-4">Unduh</a>
         </div>
-
     </div>
 
 </div>

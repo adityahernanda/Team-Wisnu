@@ -37,10 +37,22 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
+        <?php
+        $uri = service('uri');
+        $sidebarFile;
+        switch ($uri->getSegment(2)) {
+            case "client":
+                $sidebarFile = "sidebarClient";
+                break;
+            case "admin":
+                $sidebarFile = "sidebarAdmin";
+                break;
+        }
+        ?>
         <!-- Sidebar -->
-
+        <?= $this->include('inc/' . $sidebarFile) ?>
         <!-- End of Sidebar -->
-        <?= $this->include('inc/sidebarClient') ?>
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 

@@ -45,6 +45,13 @@ $routes->group('dashboard', function ($routes) {
         $routes->get('pembayaran', 'ClientDashboard::pembayaran');
         $routes->get('profile', 'ClientDashboard::profile');
     });
+    $routes->group('admin', function ($routes) {
+        $routes->get('/', 'AdminDashboard::index');
+        $routes->get('proyek', 'AdminDashboard::proyek');
+        $routes->get('proyek/(:any)', 'AdminDashboard::proyek/$1');
+        $routes->get('proyek/(:any)/(:any)', 'AdminDashboard::proyek/$1/$2');
+        $routes->get('proyek/(:any)/(:any)/(:any)', 'AdminDashboard::proyek/$1/$2/$3');
+    });
 });
 
 /*

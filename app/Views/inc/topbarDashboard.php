@@ -44,6 +44,12 @@
 
         <div class="topbar-divider d-none d-sm-block"></div>
 
+        <?php
+        $uri = service('uri');
+
+        $dashboardType = $uri->getSegment(2);
+        ?>
+
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,7 +58,7 @@
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="<?= base_url('/dashboard/client/profile') ?>">
+                <a class="dropdown-item" href="<?= base_url('/dashboard/' . $dashboardType . '/profile') ?>">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                 </a>

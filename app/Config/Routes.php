@@ -62,6 +62,7 @@ $routes->group('dashboard', function ($routes) {
         $routes->get('proyek/(:any)', 'AdminDashboard::proyek/$1');
         $routes->get('proyek/(:any)/(:any)', 'AdminDashboard::proyek/$1/$2');
         $routes->get('proyek/(:any)/(:any)/(:any)', 'AdminDashboard::proyek/$1/$2/$3');
+        $routes->get('profile', 'AdminDashboard::profile');
     });
 });
 

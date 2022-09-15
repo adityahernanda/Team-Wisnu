@@ -22,4 +22,9 @@ class AdminDashboard extends BaseController
         }
         return view('dashboard/admin/owner_proyek');
     }
+
+    public function profile()
+    {
+        return view('dashboard/admin/profile');
+    }
 }

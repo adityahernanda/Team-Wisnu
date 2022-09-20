@@ -66,6 +66,21 @@ $routes->group('dashboard', function ($routes) {
     });
 });
 
+
+$routes->group('action', function ($routes) {
+    $routes->group('proyek', function ($routes) {
+        $routes->get('/', 'ActionProyek::getProyek');
+        $routes->get('(:any)', 'ActionProyek::getProyek/$1');
+    });
+    $routes->group('progress', function ($routes) {
+        $routes->get('/', 'ActionProyek::getProgress');
+        $routes->get('(:any)', 'ActionProyek::getProgress/$1');
+    });
+    $routes->group('pembayaran', function ($routes) {
+        $routes->post('list', 'ActionPembayaran::getPembayaranByIdProyek');
+        $routes->post('dashboard', 'ActionPembayaran::getDashboardData');
+    });
+});
 /*
  * --------------------------------------------------------------------
  * Additional Routing

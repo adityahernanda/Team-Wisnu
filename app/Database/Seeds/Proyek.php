@@ -12,9 +12,15 @@ class Proyek extends Seeder
             [
                 "id_proyek" => "proy-123",
                 "id_customer" => "cust-123",
-                "progress" => "Pelanggan 1",
+                "nama" => "Proyek 1",
                 "lokasi_proyek" => "Semolowaru Gang Buntu",
-            ]
+            ],
+            [
+                "id_proyek" => "proy-666",
+                "id_customer" => "cust-123",
+                "nama" => "Proyek 2",
+                "lokasi_proyek" => "Semolowaru Gang Buntu",
+            ],
         ];
         $this->db->table('proyek')->insertBatch($data);
     }

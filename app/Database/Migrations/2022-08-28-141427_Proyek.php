@@ -16,8 +16,8 @@ class Proyek extends Migration
             'id_customer' => [
                 'type' => 'VARCHAR(25)',
             ],
-            'progress' => [
-                'type' => 'VARCHAR(3)'
+            'nama' => [
+                'type' => 'VARCHAR(25)'
             ],
             'lokasi_proyek' => [
                 'type' => 'VARCHAR(30)'

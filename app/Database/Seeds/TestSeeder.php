@@ -17,5 +17,6 @@ class TestSeeder extends Seeder
         $this->call('Pembayaran');
         $this->call('JenisPekerjaan');
         $this->call('Rab');
+        $this->call('Progress');
     }
 }

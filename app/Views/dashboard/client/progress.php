@@ -14,10 +14,10 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="progressTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No.</th>
+                            <!-- <th>No.</th> -->
                             <th>Nama Progress</th>
                             <th>Tanggal Progress</th>
                             <th>Biaya Keluar</th>
@@ -25,7 +25,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <!-- <tr>
                             <td>1</td>
                             <td>Pemasangan Ubin Ruang Tamu</td>
                             <td>2011/04/25</td>
@@ -66,7 +66,7 @@
                             <td>2011/04/25</td>
                             <td>5.000.000</td>
                             <td><a href="<?= base_url('/dashboard/client/proyek/contohIdProyek/idProgress') ?>" class="btn btn-danger">Detail</a></td>
-                        </tr>
+                        </tr> -->
 
                     </tbody>
                 </table>
@@ -74,5 +74,42 @@
         </div>
     </div>
 
+    <?php
+    $uri = service('uri');
+    $idProyek = $uri->getSegment(4);
+    ?>
+
+    <script>
+        $.ajax({
+            url: '/action/progress/proy-123',
+            method: "GET",
+            success: (res) => {
+                console.log(res);
+            }
+        })
+        $('#progressTable').DataTable({
+            ajax: '/action/progress/proy-123',
+            columns: [{
+                    data: "nama"
+                },
+                {
+                    data: "tgl_progress"
+                },
+                {
+                    data: "biaya"
+                },
+                {
+                    data: "id_progress",
+                    render: (data) => {
+                        return `
+                            <td>
+                                <a href="<?= base_url('/dashboard/client/proyek/' . $idProyek) ?>/${data}" class="btn btn-danger">Detail</a>
+                            </td>
+                    `;
+                    }
+                },
+            ]
+        });
+    </script>
 </div>
 <?= $this->endSection() ?>

@@ -14,10 +14,10 @@
         <div class="card shadow mb-4 gap-3">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="proyekTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>No.</th>
+                                <!-- <th>No.</th> -->
                                 <th>Nama Proyek</th>
                                 <th>Tanggal</th>
                                 <th>Lokasi</th>
@@ -25,7 +25,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>Proyek 1</td>
                                 <td>17/07/2022</td>
@@ -33,41 +33,38 @@
                                 <td class="text-center">
                                     <a href="<?= base_url('/dashboard/client/proyek/contohIdProyek') ?>" class="btn btn-primary">Detail</a>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Proyek 2</td>
-                                <td>11/09/2022</td>
-                                <td>Waru Gunung</td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('/dashboard/client/proyek/contohIdProyek') ?>" class="btn btn-primary">Detail</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Proyek 3</td>
-                                <td>1/01/2023</td>
-                                <td>Karang Pilang</td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('/dashboard/client/proyek/contohIdProyek') ?>" class="btn btn-primary">Detail</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Proyek 4</td>
-                                <td>15/05/2023</td>
-                                <td>Sepanjang Tani</td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('/dashboard/client/proyek/contohIdProyek') ?>" class="btn btn-primary">Detail</a>
-                                </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-
+    <script>
+        $('#proyekTable').DataTable({
+            ajax: '/action/proyek/cust-123',
+            columns: [{
+                    data: "nama"
+                },
+                {
+                    data: "tgl_mulai"
+                },
+                {
+                    data: "lokasi_proyek"
+                },
+                {
+                    data: "id_proyek",
+                    render: (data) => {
+                        return `
+                            <td class="text-center">
+                                <a href="<?= base_url('/dashboard/client/proyek') ?>/${data}" class="btn btn-primary">Detail</a>
+                            </td>
+                        `;
+                    }
+                }
+            ]
+        });
+    </script>
 </div>
 <!-- /.container-fluid -->
 <?= $this->endSection() ?>

@@ -30,6 +30,26 @@
 
     <!-- Lightbox CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/css/lightbox/lightbox.css') ?>">
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="<?= base_url('assets/sb_admin/vendor/jquery/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('assets/sb_admin/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="<?= base_url('assets/sb_admin/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="<?= base_url('assets/js/sb_admin/sb-admin-2.min.js') ?>"></script>
+
+    <!-- Page level plugins -->
+    <script src="<?= base_url('assets/sb_admin/vendor/datatables/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?= base_url('assets/sb_admin/vendor/datatables/dataTables.bootstrap4.min.js') ?>"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="<?= base_url('assets/js/sb_admin//demo/datatables-demo.js') ?>"></script>
+
+    <!-- Lightbox JS -->
+    <script src="<?= base_url('assets/js/lightbox/lightbox.js') ?>"></script>
 </head>
 
 <body id="page-top">
@@ -106,26 +126,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url('assets/sb_admin/vendor/jquery/jquery.min.js') ?>"></script>
-    <script src="<?= base_url('assets/sb_admin/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="<?= base_url('assets/sb_admin/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="<?= base_url('assets/js/sb_admin/sb-admin-2.min.js') ?>"></script>
-
-    <!-- Page level plugins -->
-    <script src="<?= base_url('assets/sb_admin/vendor/datatables/jquery.dataTables.min.js') ?>"></script>
-    <script src="<?= base_url('assets/sb_admin/vendor/datatables/dataTables.bootstrap4.min.js') ?>"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="<?= base_url('assets/js/sb_admin//demo/datatables-demo.js') ?>"></script>
-
-    <!-- Lightbox JS -->
-    <script src="<?= base_url('assets/js/lightbox/lightbox.js') ?>"></script>
 
 </body>
 

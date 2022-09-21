@@ -14,7 +14,7 @@ class LoginAdmin extends Migration
                 'null' => false
             ],
             'password' => [
-                'type' => 'VARCHAR(20)'
+                'type' => 'VARCHAR(80)'
             ],
             'akses' => [
                 'type' => 'INT(3)'

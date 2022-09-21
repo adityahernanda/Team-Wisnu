@@ -11,7 +11,7 @@ class LoginAdmin extends Seeder
         $data = [
             [
                 "email" => "test@email.com",
-                "password" => "123",
+                "password" => password_hash("123", PASSWORD_BCRYPT),
                 "akses" => 1,
                 "is_deleted" => false,
             ]

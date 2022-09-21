@@ -14,7 +14,7 @@ class LoginCustomer extends Migration
                 'null' => false
             ],
             'password' => [
-                'type' => 'VARCHAR(20)'
+                'type' => 'VARCHAR(80)'
             ],
             'is_deleted' => [
                 'type' => 'BOOLEAN',

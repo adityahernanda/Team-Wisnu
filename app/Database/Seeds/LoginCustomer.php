@@ -11,7 +11,7 @@ class LoginCustomer extends Seeder
         $data = [
             [
                 "email" => "customer@email.com",
-                "password" => "123",
+                "password" => password_hash("123", PASSWORD_BCRYPT),
                 "is_deleted" => false,
             ]
         ];

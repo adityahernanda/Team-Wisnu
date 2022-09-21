@@ -18,7 +18,7 @@ class ClientDashboard extends BaseController
 
     public function index()
     {
-        return view('dashboard/client/main');
+        return viewClient('dashboard/client/main');
     }
 
     public function proyek($idProyek = null, $idProgress = null)
@@ -27,11 +27,11 @@ class ClientDashboard extends BaseController
             $data = [
                 'progress' => $this->modelProyek->getProgressById($idProgress)
             ];
-            return view('dashboard/client/detail_progress', $data);
+            return viewClient('dashboard/client/detail_progress', $data);
         } else if ($idProyek) {
-            return view('dashboard/client/progress');
+            return viewClient('dashboard/client/progress');
         }
-        return view('dashboard/client/proyek');
+        return viewClient('dashboard/client/proyek');
     }
 
     public function pembayaran()
@@ -40,11 +40,11 @@ class ClientDashboard extends BaseController
         $data = [
             "proyek" => $proyek
         ];
-        return view('dashboard/client/pembayaran', $data);
+        return viewClient('dashboard/client/pembayaran', $data);
     }
 
     public function profile()
     {
-        return view('dashboard/client/profile');
+        return viewClient('dashboard/client/profile');
     }
 }

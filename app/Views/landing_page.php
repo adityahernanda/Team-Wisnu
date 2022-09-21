@@ -8,6 +8,8 @@
     <link rel="shortcut icon" href="<?= base_url('assets/img/Logo_2.png') ?>" type="image/x-icon">
 
     <?= $this->include('inc/styleImport') ?>
+
+    <?= $this->include('inc/scriptImport') ?>
 </head>
 
 <body>
@@ -61,27 +63,21 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="alert alert-warning" role="alert">
-                                        Email/password salah.
-                                    </div>
-                                    <form action="/adminIndex.html" method="post">
+                                    <?php if (session()->getFlashdata('error')) : ?>
+                                        <div class="alert alert-warning" role="alert">
+                                            Email / password salah.
+                                        </div>
+                                    <?php endif; ?>
+                                    <form action="/action/login/client" method="post">
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="xyz@gmail.com" required autofocus>
+                                            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="xyz@gmail.com" required autofocus>
                                         </div>
                                         <div class="mb-3">
                                             <label for="password" class="form-label">Password</label>
-                                            <input type="password" class="form-control" id="password" placeholder="password" required>
+                                            <input type="password" name="pass" class="form-control" id="password" placeholder="password" required>
                                         </div>
-                                        <div class="mb-3 form-check">
-                                            <input type="checkbox" class="form-check-input" id="rememberMe">
-                                            <label class="form-check-label" for="rememberMe">Remember me</label>
-                                        </div>
-                                        <!-- <button type="login" class="btn btn-danger">Login</button> -->
-                                        <a href="loginAdmin.html" class="btn btn-danger mx-2 my-2">Login
-                                            Admin</a>
-                                        <a href="view-client/clientIndex.html" class="btn btn-danger mx-2 my-2">Login
-                                            Client</a>
+                                        <button type="submit" class="btn btn-danger">Login</button>
                                     </form>
                                 </div>
                             </div>
@@ -91,6 +87,14 @@
             </div>
         </div>
     </nav>
+    <?php if (session()->getFlashdata('error')) : ?>
+        <script>
+            $(document).ready(function() {
+                const modal = new bootstrap.Modal('#exampleModal');
+                modal.show();
+            });
+        </script>
+    <?php endif; ?>
     <!-- Akhir Navbar -->
 
     <!-- Jumbotron -->
@@ -243,8 +247,6 @@
             Reserved</p>
     </footer>
     <!-- Akhir Footer -->
-
-    <?= $this->include('inc/scriptImport') ?>
 
 </body>
 

@@ -36,6 +36,9 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+
+$routes->get('/login', 'Login::index');
+
 $routes->group('dashboard', function ($routes) {
     $routes->group('client', function ($routes) {
         $routes->get('/', 'ClientDashboard::index');
@@ -68,6 +71,11 @@ $routes->group('dashboard', function ($routes) {
 
 
 $routes->group('action', function ($routes) {
+    $routes->group('login', function ($routes) {
+        $routes->post('client', 'Login::loginClient');
+        $routes->post('admin', 'Login::loginAdmin');
+    });
+    $routes->post('logout', 'Login::logout');
     $routes->group('proyek', function ($routes) {
         $routes->get('/', 'ActionProyek::getProyek');
         $routes->get('(:any)', 'ActionProyek::getProyek/$1');

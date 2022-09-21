@@ -6,6 +6,11 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+        <select id="proyekFilter" class="form-control col-12 col-md-4">
+            <?php foreach ($proyek as $row) : ?>
+                <option value="<?= $row['id_proyek'] ?>"><?= $row['nama'] ?></option>
+            <?php endforeach; ?>
+        </select>
     </div>
 
     <!-- Rincian Pembayaran Card -->
@@ -26,8 +31,10 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Total Anggaran</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 40,000
+                                            Total Anggaran
+                                        </div>
+                                        <div id="anggaran" class="h5 mb-0 font-weight-bold text-gray-800">
+
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -46,7 +53,8 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Sudah Terbayar</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 15,000
+                                        <div id="terbayar" class="h5 mb-0 font-weight-bold text-gray-800">
+
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -64,8 +72,10 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            Kekurangan Bayar</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 25,000
+                                            Kekurangan Bayar
+                                        </div>
+                                        <div id="kekurangan" class="h5 mb-0 font-weight-bold text-gray-800">
+
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -108,8 +118,9 @@
                                                 </div>
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                            17/08/2022</div>
+                                                        <div id="tglMulai" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -133,8 +144,9 @@
                                                 </div>
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                            17/08/2024</div>
+                                                        <div id="tglAkhir" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,7 +171,8 @@
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-auto">
                                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                            365 Hari</div>
+                                                            <span id="sisa"></span> Hari
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -186,8 +199,9 @@
                                         <div class="col mr-2">
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                        Jl. Benih Gg. Biji</div>
+                                                    <div id="lokasi" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -226,33 +240,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Proyek 1</td>
-                                <td>17/07/2022</td>
-                                <td>Wiyung</td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('/dashboard/client/proyek/1') ?>" class="btn btn-primary">Detail</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Proyek 2</td>
-                                <td>11/09/2022</td>
-                                <td>Waru Gunung</td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('/dashboard/client/proyek/1') ?>" class="btn btn-primary">Detail</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Proyek 3</td>
-                                <td>1/01/2023</td>
-                                <td>Karang Pilang</td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('/dashboard/client/proyek/1') ?>" class="btn btn-primary">Detail</a>
-                                </td>
-                            </tr>
+                            <?php
+                            $i = 1;
+                            foreach (array_slice($proyek, 0, 3) as $row) : ?>
+                                <tr>
+                                    <td><?= $i++ ?></td>
+                                    <td><?= $row['nama'] ?></td>
+                                    <td><?= $row['tgl_mulai'] ?></td>
+                                    <td><?= $row['lokasi_proyek'] ?></td>
+                                    <td class="text-center">
+                                        <a href="<?= base_url('/dashboard/client/proyek/' . $row['id_proyek']) ?>" class="btn btn-primary">Detail</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -261,7 +261,7 @@
         </div>
 
     </div>
-
+    <script src="<?= base_url('/assets/js/client/main.js') ?>" type="module"></script>
 </div>
 <!-- /.container-fluid -->
 <?= $this->endSection() ?>

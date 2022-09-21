@@ -64,6 +64,14 @@ class ProyekModel extends Model
             ->get()->getResultArray();
     }
 
+    public function getProyekById($idProyek)
+    {
+        return $this->proyek
+            ->where(['id_proyek' => $idProyek])
+            ->get()
+            ->getRowObject(0);
+    }
+
     public function getProgressByIdProyek($idProyek)
     {
         return $this->progress

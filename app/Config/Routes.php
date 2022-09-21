@@ -77,6 +77,7 @@ $routes->group('action', function ($routes) {
     });
     $routes->post('logout', 'Login::logout');
     $routes->group('proyek', function ($routes) {
+        $routes->post('card', 'ActionProyek::getCardData');
         $routes->get('/', 'ActionProyek::getProyek');
         $routes->get('(:any)', 'ActionProyek::getProyek/$1');
     });

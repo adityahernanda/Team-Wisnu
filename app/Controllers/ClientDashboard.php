@@ -18,7 +18,11 @@ class ClientDashboard extends BaseController
 
     public function index()
     {
-        return viewClient('dashboard/client/main');
+        $proyek = $this->modelProyek->getProyekByIdCustomer($_SESSION['id']);
+        $data = [
+            "proyek" => $proyek
+        ];
+        return viewClient('dashboard/client/main', $data);
     }
 
     public function proyek($idProyek = null, $idProgress = null)

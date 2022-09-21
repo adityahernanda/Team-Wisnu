@@ -26,7 +26,7 @@ class ActionPembayaran extends BaseController
         return json_encode([
             "anggaran" => $anggaran,
             "terbayar" => $terbayar,
-            "kekurangan" => $anggaran - $terbayar
+            "kekurangan" => strval($anggaran - $terbayar)
         ]);
     }
 

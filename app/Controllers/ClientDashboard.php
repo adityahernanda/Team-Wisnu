@@ -36,7 +36,7 @@ class ClientDashboard extends BaseController
 
     public function pembayaran()
     {
-        $proyek = $this->modelProyek->getProyekByIdCustomer('cust-123');
+        $proyek = $this->modelProyek->getProyekByIdCustomer($_SESSION['id']);
         $data = [
             "proyek" => $proyek
         ];

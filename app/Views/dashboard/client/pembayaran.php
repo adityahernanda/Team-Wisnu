@@ -128,63 +128,7 @@
             <a href="" class="btn btn-outline-primary mb-4">Unduh</a>
         </div>
     </div>
-    <script>
-        let pembayaranTable = $('#pembayaranTable').DataTable({
-            columns: [{
-                    data: "tgl"
-                },
-                {
-                    data: "jumlah"
-                },
-                {
-                    data: "ket"
-                },
-            ]
-        });
-
-        pembayaranTable.ajax.url({
-            url: '/action/pembayaran/list',
-            type: 'POST',
-            data: function(d) {
-                d.id_proyek = $('#proyekFilter').val()
-            }
-        }).load();
-
-        $.ajax({
-            url: '/action/pembayaran/dashboard',
-            method: 'POST',
-            data: {
-                id_proyek: $('#proyekFilter').val()
-            },
-            success: function(res) {
-                console.log(res);
-                const obj = JSON.parse(res);
-                $('#anggaran').html(obj.anggaran);
-                $('#terbayar').html(obj.terbayar);
-                $('#kekurangan').html(obj.kekurangan);
-            }
-        });
-
-        $('#proyekFilter').on('change', function() {
-            const idProyek = $(this).val();
-            pembayaranTable.ajax.url('/action/pembayaran/list').load();
-
-            $.ajax({
-                url: '/action/pembayaran/dashboard',
-                method: 'POST',
-                data: {
-                    id_proyek: idProyek
-                },
-                success: function(res) {
-                    console.log(res);
-                    const obj = JSON.parse(res);
-                    $('#anggaran').html(obj.anggaran);
-                    $('#terbayar').html(obj.terbayar);
-                    $('#kekurangan').html(obj.kekurangan);
-                }
-            });
-        });
-    </script>
+    <script src="<?= base_url('/assets/js/client/pembayaran.js') ?>" type="module"></script>
 </div>
 <!-- /.container-fluid -->
 <?= $this->endSection() ?>

@@ -45,9 +45,13 @@ class ActionProyek extends BaseController
     public function getProgress($idProyek = null)
     {
         if ($idProyek) {
-            return json_encode([
-                "data" => $this->model->getProgressByIdProyek($idProyek)
-            ]);
+            $progress = $this->model->getProgressByIdProyek($idProyek);
+            $owner = $this->model->getProyekOwnerById($idProyek);
+            if ($owner == $_SESSION['id']) {
+                return json_encode([
+                    "data" => $progress
+                ]);
+            }
         }
         // return json_encode([
         //     "data" => $this->model->getProgress()

@@ -25,48 +25,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <tr>
-                            <td>1</td>
-                            <td>Pemasangan Ubin Ruang Tamu</td>
-                            <td>2011/04/25</td>
-                            <td>5.000.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohIdProyek/idProgress') ?>" class="btn btn-danger">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Pemasangan Titik Lampu</td>
-                            <td>2022/04/25</td>
-                            <td>1.500.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohIdProyek/idProgress') ?>" class="btn btn-danger">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Pengecatan Dinding Kamar Tidur</td>
-                            <td>2015/04/25</td>
-                            <td>8.000.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohIdProyek/idProgress') ?>" class="btn btn-danger">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Las Pagar Depan</td>
-                            <td>2020/04/25</td>
-                            <td>2.000.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohIdProyek/idProgress') ?>" class="btn btn-danger">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Pemasangan Ubin Ruang Tamu</td>
-                            <td>2011/04/25</td>
-                            <td>5.000.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohIdProyek/idProgress') ?>" class="btn btn-danger">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Pemasangan Ubin Ruang Tamu</td>
-                            <td>2011/04/25</td>
-                            <td>5.000.000</td>
-                            <td><a href="<?= base_url('/dashboard/client/proyek/contohIdProyek/idProgress') ?>" class="btn btn-danger">Detail</a></td>
-                        </tr> -->
 
                     </tbody>
                 </table>
@@ -79,16 +37,13 @@
     $idProyek = $uri->getSegment(4);
     ?>
 
-    <script>
-        $.ajax({
-            url: '/action/progress/proy-123',
-            method: "GET",
-            success: (res) => {
-                console.log(res);
-            }
-        })
+    <script type="module">
+        import {
+            formatRupiah
+        } from '<?= base_url('/assets/js/helper.js') ?>';
+
         $('#progressTable').DataTable({
-            ajax: '/action/progress/proy-123',
+            ajax: '/action/progress/<?= $idProyek ?>',
             columns: [{
                     data: "nama"
                 },
@@ -96,7 +51,10 @@
                     data: "tgl_progress"
                 },
                 {
-                    data: "biaya"
+                    data: "biaya",
+                    render: (data) => {
+                        return formatRupiah(data);
+                    }
                 },
                 {
                     data: "id_progress",

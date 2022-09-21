@@ -28,10 +28,15 @@ class ClientDashboard extends BaseController
     public function proyek($idProyek = null, $idProgress = null)
     {
         if ($idProyek && $idProgress) {
-            $data = [
-                'progress' => $this->modelProyek->getProgressById($idProgress)
-            ];
-            return viewClient('dashboard/client/detail_progress', $data);
+            $progress = $this->modelProyek->getProgressById($idProgress);
+            if ($progress && $idProyek == $progress->id_proyek) {
+                $data = [
+                    'progress' => $progress
+                ];
+                return viewClient('dashboard/client/detail_progress', $data);
+            } else {
+                return $this->response->redirect('/dashboard/client/proyek/' . $idProyek);
+            }
         } else if ($idProyek) {
             return viewClient('dashboard/client/progress');
         }

@@ -25,15 +25,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- <tr>
-                                <td>1</td>
-                                <td>Proyek 1</td>
-                                <td>17/07/2022</td>
-                                <td>Wiyung</td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('/dashboard/client/proyek/contohIdProyek') ?>" class="btn btn-primary">Detail</a>
-                                </td>
-                            </tr> -->
+                            
                         </tbody>
                     </table>
                 </div>
@@ -42,7 +34,7 @@
     </div>
     <script>
         $('#proyekTable').DataTable({
-            ajax: '/action/proyek/cust-123',
+            ajax: '/action/proyek/<?= $_SESSION['id'] ?>',
             columns: [{
                     data: "nama"
                 },

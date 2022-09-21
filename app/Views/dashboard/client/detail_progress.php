@@ -22,9 +22,11 @@
                             <label for="tanggalProgress">Tanggal Progress</label>
                             <input type="date" class="form-control" id="tanggalProgress" value="<?= $progress->tgl_progress ?>" readonly>
                         </div>
+                        <?php helper('format_helper'); ?>
                         <div class="form-group">
                             <label for="biayaKeluar">Biaya Keluar</label>
-                            <input type="text" class="form-control" id="biayaKeluar" aria-describedby="biayaKeluar" value="<?= $progress->biaya ?>" readonly>
+                            <input type="text" class="form-control" id="biayaKeluar" aria-describedby="biayaKeluar" value="<?= rupiah($progress->biaya) ?>" readonly>
+
                         </div>
                         <div class="form-group">
                             <label for="presentaseKerja">Presentase Pekerjaan (%)</label>

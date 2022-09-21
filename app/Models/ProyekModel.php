@@ -57,6 +57,15 @@ class ProyekModel extends Model
             ->get()->getResultArray();
     }
 
+    public function getProyekOwnerById($idProyek)
+    {
+        return $this->proyek
+            ->where(['id_proyek' => $idProyek])
+            ->get()
+            ->getRowObject(0)
+            ->id_customer;
+    }
+
     public function getProyekByIdCustomer($idCustomer)
     {
         return $this->proyek

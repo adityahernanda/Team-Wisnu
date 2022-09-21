@@ -34,7 +34,7 @@ let pembayaranTable = $("#pembayaranTable").DataTable({
 });
 
 $.ajax({
-  url: "/action/pembayaran/dashboard",
+  url: "/action/pembayaran/card",
   method: "POST",
   data: {
     id_proyek: $("#proyekFilter").val(),
@@ -53,7 +53,7 @@ document.addEventListener(RENDER_EVENT, function () {
   pembayaranTable.ajax.url("/action/pembayaran/list").load();
 
   $.ajax({
-    url: "/action/pembayaran/dashboard",
+    url: "/action/pembayaran/card",
     method: "POST",
     data: {
       id_proyek: idProyek,

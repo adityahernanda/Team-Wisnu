@@ -86,7 +86,7 @@ $routes->group('action', function ($routes) {
     });
     $routes->group('pembayaran', function ($routes) {
         $routes->post('list', 'ActionPembayaran::getPembayaranByIdProyek');
-        $routes->post('dashboard', 'ActionPembayaran::getDashboardData');
+        $routes->post('card', 'ActionPembayaran::getCardData');
     });
 });
 /*

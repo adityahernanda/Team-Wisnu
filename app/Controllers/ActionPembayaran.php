@@ -18,7 +18,7 @@ class ActionPembayaran extends BaseController
     }
 
 
-    public function getDashboardData()
+    public function getCardData()
     {
         $id = $this->request->getVar('id_proyek');
         $terbayar = $this->modelPembayaran->getTerbayarByIdProyek($id);

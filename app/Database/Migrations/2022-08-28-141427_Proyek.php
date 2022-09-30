@@ -16,6 +16,9 @@ class Proyek extends Migration
             'id_customer' => [
                 'type' => 'VARCHAR(25)',
             ],
+            'id_admin' => [
+                'type' => 'VARCHAR(25)',
+            ],
             'nama' => [
                 'type' => 'VARCHAR(25)'
             ],
@@ -31,6 +34,7 @@ class Proyek extends Migration
         ]);
         $this->forge->addPrimaryKey('id_proyek');
         $this->forge->addForeignKey('id_customer', 'data_customer', 'id_customer');
+        $this->forge->addForeignKey('id_admin', 'data_admin', 'id_admin');
         $this->forge->createTable('proyek');
     }
 

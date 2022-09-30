@@ -12,12 +12,14 @@ class Proyek extends Seeder
             [
                 "id_proyek" => "proy-123",
                 "id_customer" => "cust-123",
+                "id_admin" => "adm-123",
                 "nama" => "Proyek 1",
                 "lokasi_proyek" => "Semolowaru Gang Buntu",
             ],
             [
                 "id_proyek" => "proy-666",
                 "id_customer" => "cust-123",
+                "id_admin" => "adm-123",
                 "nama" => "Proyek 2",
                 "lokasi_proyek" => "Semolowaru Gang Buntu",
             ],

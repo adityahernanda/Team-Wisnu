@@ -64,7 +64,6 @@ $routes->group('dashboard', function ($routes) {
         $routes->get('proyek', 'AdminDashboard::proyek');
         $routes->get('proyek/(:any)', 'AdminDashboard::proyek/$1');
         $routes->get('proyek/(:any)/(:any)', 'AdminDashboard::proyek/$1/$2');
-        $routes->get('proyek/(:any)/(:any)/(:any)', 'AdminDashboard::proyek/$1/$2/$3');
         $routes->get('profile', 'AdminDashboard::profile');
     });
 });
@@ -80,9 +79,11 @@ $routes->group('action', function ($routes) {
         $routes->post('card', 'ActionProyek::getCardData');
         $routes->get('/', 'ActionProyek::getProyek');
         $routes->get('(:any)', 'ActionProyek::getProyek/$1');
+        $routes->post('admin', 'ActionProyek::getProyekByIdAdmin');
     });
     $routes->group('progress', function ($routes) {
         $routes->get('/', 'ActionProyek::getProgress');
+        $routes->post('/', 'ActionProyek::getProgressByIdProyek');
         $routes->get('(:any)', 'ActionProyek::getProgress/$1');
     });
     $routes->group('pembayaran', function ($routes) {

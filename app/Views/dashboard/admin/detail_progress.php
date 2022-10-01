@@ -16,23 +16,24 @@
                     <form>
                         <div class="form-group">
                             <label for="namaProgress">Nama Progress</label>
-                            <input type="text" class="form-control" id="namaProgress" aria-describedby="namaProgress" value="Pemasangan ubin ruang tamu" readonly>
+                            <input type="text" class="form-control" id="namaProgress" aria-describedby="namaProgress" value="<?= $progress->nama ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="tanggalProgress">Tanggal Progress</label>
-                            <input type="date" class="form-control" id="tanggalProgress" value="2022-03-12" readonly>
+                            <input type="date" class="form-control" id="tanggalProgress" value="<?= $progress->tgl_progress ?>" readonly>
                         </div>
+                        <?php helper('format_helper'); ?>
                         <div class="form-group">
                             <label for="biayaKeluar">Biaya Keluar</label>
-                            <input type="text" class="form-control" id="biayaKeluar" aria-describedby="biayaKeluar" value="5.000.000" readonly>
+                            <input type="text" class="form-control" id="biayaKeluar" aria-describedby="biayaKeluar" value="<?= rupiah($progress->biaya) ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="presentaseKerja">Presentase Pekerjaan (%)</label>
-                            <input type="text" class="form-control" id="presentaseKerja" aria-describedby="presentaseKerja" value="50" readonly>
+                            <input type="text" class="form-control" id="presentaseKerja" aria-describedby="presentaseKerja" value="<?= $progress->presentase ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="keteranganProgress">Keterangan</label>
-                            <textarea class="form-control" name="keteranganProgress" id="keteranganProgress" cols="30" rows="5" readonly>Ubin telah terpakai 5 kardus, tersisa 6 kardus</textarea>
+                            <textarea class="form-control" name="keteranganProgress" id="keteranganProgress" cols="30" rows="5" readonly><?= $progress->keterangan ?></textarea>
                         </div>
                     </form>
                 </div>

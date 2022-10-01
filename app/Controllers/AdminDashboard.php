@@ -3,24 +3,38 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ProyekModel;
 
 class AdminDashboard extends BaseController
 {
-    public function index()
+    protected $modelProyek;
+
+    public function __construct()
     {
-        return viewAdmin('dashboard/admin/main');
+        $this->modelProyek = new ProyekModel();
     }
 
-    public function proyek($idOwner = null, $idProyek = null, $idProgress = null)
+    public function index()
     {
-        if ($idOwner && $idProyek && $idProgress) {
-            return viewAdmin('dashboard/admin/detail_progress');
-        } else if ($idOwner && $idProyek) {
+        $proyek = $this->modelProyek->getProyekByIdAdmin($_SESSION['id']);
+        $data = [
+            'proyek' => $proyek
+        ];
+        return viewAdmin('dashboard/admin/main', $data);
+    }
+
+    public function proyek($idProyek = null, $idProgress = null)
+    {
+        if ($idProyek && $idProgress) {
+            $progress = $this->modelProyek->getProgressById($idProgress);
+            $data = [
+                'progress' => $progress
+            ];
+            return viewAdmin('dashboard/admin/detail_progress', $data);
+        } else if ($idProyek) {
             return viewAdmin('dashboard/admin/progress');
-        } else if ($idOwner) {
-            return viewAdmin('dashboard/admin/proyek');
         }
-        return viewAdmin('dashboard/admin/owner_proyek');
+        return viewAdmin('dashboard/admin/proyek');
     }
 
     public function profile()

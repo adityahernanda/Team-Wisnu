@@ -11,45 +11,36 @@
     <!-- Client Project Tabel -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Proyek Client</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Daftar Proyek</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTables" width="100%" cellspacing="0">
+                <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No.</th>
                             <th>Nama Owner</th>
+                            <th>Nama Proyek</th>
+                            <th>Lokasi</th>
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Rudi</td>
-                            <td>2011/04/25</td>
-                            <td>2018/04/26</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Bagong</td>
-                            <td>2017/09/10</td>
-                            <td>2022/09/11</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Lita</td>
-                            <td>2023/04/05</td>
-                            <td>2014/04/06</td>
-                        </tr>
+                        <?php foreach (array_slice($proyek, 0, 3) as $row) : ?>
+                            <tr>
+                                <td><?= $row['nama_owner'] ?></td>
+                                <td><?= $row['nama'] ?></td>
+                                <td><?= $row['lokasi_proyek'] ?></td>
+                                <td><?= $row['tgl_mulai'] ?></td>
+                                <td><?= $row['tgl_selesai'] ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
                 <a href="<?= base_url('/dashboard/admin/proyek') ?>" class="btn btn-danger">Show More...</a>
             </div>
         </div>
     </div>
-
 </div>
 <!-- /.container-fluid -->
 

@@ -65,11 +65,29 @@ class ProyekModel extends Model
             ->getRowObject(0)
             ->id_customer;
     }
+    
+    public function getProyekAdminById($idProyek)
+    {
+        return $this->proyek
+            ->where(['id_proyek' => $idProyek])
+            ->get()
+            ->getRowObject(0)
+            ->id_admin;
+    }
 
     public function getProyekByIdCustomer($idCustomer)
     {
         return $this->proyek
             ->where(['id_customer' => $idCustomer])
+            ->get()->getResultArray();
+    }
+
+    public function getProyekByIdAdmin($idAdmin)
+    {
+        return $this->proyek
+            ->select('id_proyek, data_customer.nama AS nama_owner, proyek.nama, lokasi_proyek, tgl_mulai, tgl_selesai')
+            ->where(['id_admin' => $idAdmin])
+            ->join('data_customer', 'data_customer.id_customer = proyek.id_customer')
             ->get()->getResultArray();
     }
 

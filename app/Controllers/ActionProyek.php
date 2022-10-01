@@ -57,4 +57,27 @@ class ActionProyek extends BaseController
         //     "data" => $this->model->getProgress()
         // ]);
     }
+
+    // ADMIN PAKAI
+    public function getProyekByIdAdmin()
+    {
+        $idAdmin = $this->request->getVar('id');
+        return json_encode([
+            "data" => $this->model->getProyekByIdAdmin($idAdmin)
+        ]);
+    }
+
+    public function getProgressByIdProyek()
+    {
+        $idProyek = $this->request->getVar('id');
+        if ($idProyek) {
+            $progress = $this->model->getProgressByIdProyek($idProyek);
+            $admin = $this->model->getProyekAdminById($idProyek);
+            if ($admin == $_SESSION['id']) {
+                return json_encode([
+                    "data" => $progress
+                ]);
+            }
+        }
+    }
 }

@@ -14,7 +14,7 @@ class Portofolio extends Migration
                 'null' => false
             ],
             'url_gambar' => [
-                'type' => 'VARCHAR(30)'
+                'type' => 'VARCHAR(80)'
             ],
             'keterangan' => [
                 'type' => 'VARCHAR(255)'

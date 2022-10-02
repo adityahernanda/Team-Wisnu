@@ -17,7 +17,7 @@ class Foto extends Migration
                 'type' => 'VARCHAR(25)',
             ],
             'url_foto' => [
-                'type' => 'VARCHAR(25)'
+                'type' => 'VARCHAR(80)'
             ],
             'tgl datetime default current_timestamp'
         ]);

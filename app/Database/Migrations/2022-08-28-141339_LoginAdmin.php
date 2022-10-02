@@ -17,7 +17,8 @@ class LoginAdmin extends Migration
                 'type' => 'VARCHAR(80)'
             ],
             'akses' => [
-                'type' => 'INT(3)'
+                'type' => 'INT(3)',
+                'default' => 1
             ],
             'is_deleted' => [
                 'type' => 'BOOLEAN',

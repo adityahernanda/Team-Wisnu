@@ -93,6 +93,12 @@ $routes->group('action', function ($routes) {
         $routes->get('(:any)', 'ActionProyek::getProyek/$1');
         $routes->post('admin', 'ActionProyek::getProyekByIdAdmin');
     });
+    $routes->group('portofolio', function ($routes) {
+        $routes->post('add', 'ActionPortofolio::addPortofolio');
+        $routes->get('get', 'ActionPortofolio::getPortofolio');
+        $routes->post('edit', 'ActionPortofolio::editPortofolio');
+        $routes->post('delete', 'ActionPortofolio::deletePortofolio');
+    });
     $routes->group('progress', function ($routes) {
         $routes->get('/', 'ActionProyek::getProgress');
         $routes->post('/', 'ActionProyek::getProgressByIdProyek');

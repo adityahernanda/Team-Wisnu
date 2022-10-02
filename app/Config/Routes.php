@@ -74,6 +74,18 @@ $routes->group('action', function ($routes) {
         $routes->post('client', 'Login::loginClient');
         $routes->post('admin', 'Login::loginAdmin');
     });
+    $routes->group('client', function ($routes) {
+        $routes->post('add', 'ActionClient::addClient');
+        $routes->get('get', 'ActionClient::getClient');
+        $routes->post('edit', 'ActionClient::editClientById');
+        $routes->post('delete', 'ActionClient::deleteClient');
+    });
+    $routes->group('admin', function ($routes) {
+        $routes->post('add', 'ActionAdmin::addAdmin');
+        $routes->get('get', 'ActionAdmin::getAdmin');
+        $routes->post('edit', 'ActionAdmin::editAdminById');
+        $routes->post('delete', 'ActionAdmin::deleteAdmin');
+    });
     $routes->post('logout', 'Login::logout');
     $routes->group('proyek', function ($routes) {
         $routes->post('card', 'ActionProyek::getCardData');

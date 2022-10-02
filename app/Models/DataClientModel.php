@@ -42,16 +42,99 @@ class DataClientModel extends Model
     protected $afterDelete    = [];
 
     protected $db;
+    protected $tableData;
+    protected $tableLogin;
     public function __construct()
     {
-        $this->db = Database::connect()->table('data_customer');
+        $this->db = Database::connect();
+        $this->tableData = $this->db->table('data_customer');
+        $this->tableLogin = $this->db->table('login_customer');
     }
 
     public function getUserDataByEmail($email)
     {
-        return $this->db
+        return $this->tableData
             ->where(["email" => $email])
             ->get()
             ->getRowObject(0);
+    }
+
+    public function addUser($nama, $pass, $email, $hp)
+    {
+        $this->tableLogin->insert([
+            'email' => $email,
+            'password' => password_hash($pass, PASSWORD_BCRYPT)
+        ]);
+        $this->tableData->insert([
+            'id_customer' => 'cust-' . bin2hex(random_bytes(8)),
+            'email' => $email,
+            'nama' => $nama,
+            'hp' => $hp,
+        ]);
+    }
+
+    public function getUsers()
+    {
+        return $this->tableData
+            ->join('login_customer', 'login_customer.email = data_customer.email')
+            ->where(['is_deleted' => false])
+            ->get()
+            ->getResultArray();
+    }
+
+    public function editUserById($id, $pass, $email, $hp)
+    {
+        $oldEmail = $this->tableData
+            ->where(['id_customer' => $id])
+            ->get()
+            ->getRowObject(0)
+            ->email;
+
+        $oldPass = $this->tableLogin
+            ->where(['email' => $oldEmail])
+            ->get()
+            ->getRowObject(0)
+            ->password;
+
+        if ($email) {
+            $this->tableLogin->insert([
+                'email' => $email,
+                'password' => $pass ? password_hash($pass, PASSWORD_BCRYPT) : $oldPass
+            ]);
+
+            $this->tableData->update([
+                'email' => $email,
+            ], [
+                'id_customer' => $id
+            ]);
+
+            $this->tableLogin->delete([
+                'email' => $oldEmail
+            ]);
+        }
+
+        if ($pass && !$email) {
+            $this->tableLogin->update([
+                'password' => password_hash($pass, PASSWORD_BCRYPT)
+            ], [
+                'email' => $oldEmail
+            ]);
+        }
+
+        if ($hp) {
+            $this->tableData->update([
+                'hp' => $hp
+            ], [
+                'id_customer' => $id
+            ]);
+        }
+    }
+
+    public function deleteUserByEmail($email)
+    {
+        $this->tableLogin->update(
+            ["is_deleted" => true],
+            ["email" => $email]
+        );
     }
 }

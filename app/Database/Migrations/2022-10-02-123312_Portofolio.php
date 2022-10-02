@@ -17,7 +17,7 @@ class Portofolio extends Migration
                 'type' => 'VARCHAR(30)'
             ],
             'keterangan' => [
-                'type' => 'VARCHAR(30)'
+                'type' => 'VARCHAR(255)'
             ],
         ]);
         $this->forge->addPrimaryKey('id_portofolio');

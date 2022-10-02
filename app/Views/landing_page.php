@@ -139,42 +139,14 @@
             <p>Hasil dari project yang kami tangani</p>
 
             <div class="owl-carousel">
-                <div class="card" style="width: 22rem;">
-                    <img src="assets/img/portofolio 1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Blara Cafe.</p>
+                <?php foreach ($porto as $row) : ?>
+                    <div class="card">
+                        <img src="<?= base_url('uploads/portofolio/' . $row['url_gambar']) ?>" class="card-img-top" alt="project image">
+                        <div class="card-body">
+                            <p class="card-text"><?= $row['keterangan'] ?></p>
+                        </div>
                     </div>
-                </div>
-                <div class="card" style="width: 22rem;">
-                    <img src="assets/img/portofolio 2.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Hunian Rumah.</p>
-                    </div>
-                </div>
-                <div class="card" style="width: 22rem;">
-                    <img src="assets/img/portofolio 3.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Gedung Perkantoran.</p>
-                    </div>
-                </div>
-                <div class="card" style="width: 22rem;">
-                    <img src="assets/img/portofolio 4.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Living Room Interior Design.</p>
-                    </div>
-                </div>
-                <div class="card" style="width: 22rem;">
-                    <img src="assets/img/portofolio 5.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Starbucks Coffee.</p>
-                    </div>
-                </div>
-                <div class="card" style="width: 22rem;">
-                    <img src="assets/img/portofolio 6.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Office Interior Design.</p>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
@@ -248,6 +220,8 @@
     </footer>
     <!-- Akhir Footer -->
 
+    <!-- My JS -->
+    <script src="<?= base_url('assets/js/script.js') ?>"></script>
 </body>
 
 </html>

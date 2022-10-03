@@ -30,6 +30,14 @@ class ActionProyek extends BaseController
         ]);
     }
 
+    public function getProyekWithOwner()
+    {
+        $proyek = $this->model->getProyekWithOwner();
+        return json_encode([
+            "data" => $proyek
+        ]);
+    }
+
     public function getProyek($idCustomer = null)
     {
         if ($idCustomer) {

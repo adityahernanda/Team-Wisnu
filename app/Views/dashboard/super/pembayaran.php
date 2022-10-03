@@ -14,16 +14,16 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="proyekTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>No.</th>
                                 <th>Owner</th>
+                                <th>Nama Proyek</th>
                                 <th>Lokasi</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <!-- <tbody>
                             <tr>
                                 <td>1</td>
                                 <td>Doddy</td>
@@ -72,13 +72,42 @@
                                     <a href="<?= base_url('/dashboard/sa/pembayaran/idProyek') ?>" class="btn btn-primary">Detail</a>
                                 </td>
                             </tr>
-                        </tbody>
+                        </tbody> -->
                     </table>
                 </div>
             </div>
         </div>
     </div>
-
+    <script>
+        $.ajax({
+            url: '/action/proyek/get',
+            method: 'GET',
+            success: (res) => {
+                console.log(res);
+            }
+        })
+        $('#proyekTable').DataTable({
+            ajax: '/action/proyek/get',
+            columns: [{
+                    data: 'nama_owner'
+                },
+                {
+                    data: 'nama_proyek'
+                },
+                {
+                    data: 'lokasi_proyek'
+                },
+                {
+                    data: 'id_proyek',
+                    render: (data) => {
+                        return `
+                            <a href="<?= base_url('/dashboard/sa/pembayaran') ?>/${data}" class="btn btn-primary">Detail</a>
+                        `;
+                    }
+                },
+            ]
+        })
+    </script>
 </div>
 <!-- /.container-fluid -->
 

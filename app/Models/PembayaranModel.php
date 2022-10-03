@@ -47,6 +47,17 @@ class PembayaranModel extends Model
         $this->db = Database::connect()->table('pembayaran');
     }
 
+    public function addPembayaran($idProyek, $jumlah, $ket, $tgl)
+    {
+        $this->db->insert([
+            "id_pembayaran" => "pemb-" . bin2hex(random_bytes(8)),
+            "id_proyek" => $idProyek,
+            "jumlah" => $jumlah,
+            "ket" => $ket,
+            "tgl" => $tgl,
+        ]);
+    }
+
     public function getPembayaranByIdProyek($idProyek)
     {
         return $this->db
@@ -61,6 +72,11 @@ class PembayaranModel extends Model
             ->where(['id_proyek' => $idProyek])
             ->get()
             ->getRowObject(0)
-            ->terbayar;
+            ->terbayar ?: '0';
+    }
+
+    public function deletePembayaranById($id)
+    {
+        $this->db->delete(['id_pembayaran' => $id]);
     }
 }

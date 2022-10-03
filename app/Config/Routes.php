@@ -88,6 +88,9 @@ $routes->group('action', function ($routes) {
     });
     $routes->post('logout', 'Login::logout');
     $routes->group('proyek', function ($routes) {
+        // SA
+        $routes->get('get', 'ActionProyek::getProyekWithOwner');
+        
         $routes->post('card', 'ActionProyek::getCardData');
         $routes->get('/', 'ActionProyek::getProyek');
         $routes->get('(:any)', 'ActionProyek::getProyek/$1');
@@ -107,6 +110,8 @@ $routes->group('action', function ($routes) {
     $routes->group('pembayaran', function ($routes) {
         $routes->post('list', 'ActionPembayaran::getPembayaranByIdProyek');
         $routes->post('card', 'ActionPembayaran::getCardData');
+        $routes->post('add', 'ActionPembayaran::addPembayaran');
+        $routes->post('delete', 'ActionPembayaran::deletePembayaranById');
     });
 });
 /*

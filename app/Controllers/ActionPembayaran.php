@@ -21,13 +21,32 @@ class ActionPembayaran extends BaseController
     public function getCardData()
     {
         $id = $this->request->getVar('id_proyek');
+        $proyek = $this->modelProyek->getProyekById($id);
         $terbayar = $this->modelPembayaran->getTerbayarByIdProyek($id);
         $anggaran = $this->modelProyek->getAnggaranByIdProyek($id);
+
         return json_encode([
+            "proyek" => $proyek,
             "anggaran" => $anggaran,
             "terbayar" => $terbayar,
             "kekurangan" => strval($anggaran - $terbayar)
         ]);
+    }
+
+    public function addPembayaran()
+    {
+        $idProyek = $this->request->getVar('id_proyek');
+        $jumlah = $this->request->getVar('jumlah');
+        $ket = $this->request->getVar('ket');
+        $tgl = $this->request->getVar('tgl');
+
+        $this->modelPembayaran->addPembayaran(
+            $idProyek,
+            $jumlah,
+            $ket,
+            $tgl,
+        );
+        $this->response->redirect('/dashboard/sa/pembayaran/' . $idProyek);
     }
 
     public function getPembayaranByIdProyek()
@@ -38,5 +57,13 @@ class ActionPembayaran extends BaseController
         return json_encode([
             "data" => $pembayaran
         ]);
+    }
+
+    public function deletePembayaranById()
+    {
+        $idProyek = $this->request->getVar('id_proyek');
+        $id = $this->request->getVar('id');
+        $this->modelPembayaran->deletePembayaranById($id);
+        $this->response->redirect('/dashboard/sa/pembayaran/' . $idProyek);
     }
 }

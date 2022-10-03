@@ -4,49 +4,31 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Rincian Pembayaran <span class="namaUser">Doddy/Lita/Bagong</span> </h1>
+    <div class="mb-3">
+        <h1 class="h3 text-gray-800">Rincian Pembayaran</h1>
+        <div>
+            <table>
+                <tr>
+                    <th>Nama Owner</th>
+                    <th class="text-center" style="width: 20px;">:</th>
+                    <td id="owner"></td>
+                </tr>
+                <tr>
+                    <th>Nama Proyek</th>
+                    <th class="text-center" style="width: 20px;">:</th>
+                    <td id="proyek"></td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <!-- Tombol Tambah Pembayaran -->
     <div class="row">
         <div class="col">
             <!-- Tambah Button trigger modal -->
-            <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addPembayaran">
                 Tambah
             </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pembayaran</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="tambahRABTanggal">Tanggal Bayar</label>
-                                    <input type="date" class="form-control" id="tambahRABTanggal" aria-describedby="tambahRABTanggal" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="tambahRABNominal">Nominal</label>
-                                    <input type="text" class="form-control" id="tambahRABNominal" aria-describedby="tambahRABNominal" autofocus required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="tambahRABKeterangan">Keterangan Tambahan</label>
-                                    <textarea class="form-control" name="tambahRABKeterangan" id="tambahRABKeterangan" aria-describedby="tambahRABKeterangan" cols="40" rows="5">
-                                    </textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Tambah</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -70,8 +52,9 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                        Rp 40,000</div>
+                                                    <div id="anggaran" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -94,8 +77,9 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                        Rp 15,000</div>
+                                                    <div id="terbayar" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -118,8 +102,9 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                        Rp 25,000</div>
+                                                    <div id="kekurangan" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -135,22 +120,28 @@
             </div>
         </div>
 
+        <script>
+            function deleteModal(id) {
+                $('#idPembayaranDel').val(id);
+                $('#deletePembayaran').modal().show();
+            }
+        </script>
+
         <div class="col-xl-7">
             <!-- RAB Tabel -->
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered" id="pembayaranTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
                                     <th>Tanggal Bayar</th>
                                     <th>Nominal</th>
                                     <th>Keterangan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <!-- <tbody>
                                 <tr>
                                     <td>1</td>
                                     <td>2011/04/25</td>
@@ -178,7 +169,7 @@
                                         <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#hapusModal">Delete</a>
                                     </td>
                                 </tr>
-                            </tbody>
+                            </tbody> -->
                         </table>
                     </div>
                 </div>
@@ -186,9 +177,124 @@
             <h5>File Rancang Anggaran Bangun</h5>
             <a href="" class="btn btn-outline-primary mb-4">Unduh</a>
         </div>
-
     </div>
 
+    <?php $uri = service('uri'); ?>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addPembayaran">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Pembayaran</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="/action/pembayaran/add">
+                        <div class="form-group">
+                            <label for="tambahRABTanggal">Tanggal Bayar</label>
+                            <input name="tgl" type="date" class="form-control" id="tambahRABTanggal" aria-describedby="tambahRABTanggal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tambahRABNominal">Nominal</label>
+                            <input name="jumlah" type="text" class="form-control" id="tambahRABNominal" aria-describedby="tambahRABNominal" autofocus required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tambahRABKeterangan">Keterangan Tambahan</label>
+                            <textarea name="ket" class="form-control" id="tambahRABKeterangan" aria-describedby="tambahRABKeterangan" cols="40" rows="5"></textarea>
+                        </div>
+                        <input type="hidden" name="id_proyek" value="<?= $uri->getSegment(4) ?>">
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deletePembayaran">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Hapus Item</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Yakin ingin menghapus item?</div>
+                <div class="modal-footer">
+                    <form action="/action/pembayaran/delete" method="post">
+                        <input type="hidden" name="id" id="idPembayaranDel">
+                        <input type="hidden" name="id_proyek" value="<?= $uri->getSegment(4) ?>">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Hapus</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import {
+            formatRupiah
+        } from '<?= base_url('assets/js/helper.js') ?>';
+
+        $('#pembayaranTable').DataTable({
+            ajax: {
+                url: "/action/pembayaran/list",
+                type: "POST",
+                data: function(d) {
+                    d.id_proyek = '<?= $uri->getSegment(4) ?>'
+                },
+            },
+            columns: [{
+                    data: "tgl",
+                },
+                {
+                    data: "jumlah",
+                    render: (data) => {
+                        return formatRupiah(data);
+                    },
+                },
+                {
+                    data: "ket",
+                },
+                {
+                    data: "id_pembayaran",
+                    render: (data) => {
+                        return `
+                        <button onclick="deleteModal('${data}')" class="btn btn-danger">Delete</button>
+                        `;
+                    }
+                },
+            ],
+        })
+
+        function renderCard(obj) {
+            $("#anggaran").html(formatRupiah(obj.anggaran));
+            $("#terbayar").html(formatRupiah(obj.terbayar));
+            $("#kekurangan").html(formatRupiah(obj.kekurangan));
+        }
+
+        function renderInfo(obj) {
+            $('#owner').html(obj.proyek.nama_owner);
+            $('#proyek').html(obj.proyek.nama_proyek);
+        }
+
+        $.ajax({
+            url: "/action/pembayaran/card",
+            method: "POST",
+            data: {
+                id_proyek: '<?= $uri->getSegment(4) ?>'
+            },
+            success: function(res) {
+                const obj = JSON.parse(res);
+                renderInfo(obj);
+                renderCard(obj);
+            },
+        });
+    </script>
 </div>
 <!-- /.container-fluid -->
 <?= $this->endSection() ?>

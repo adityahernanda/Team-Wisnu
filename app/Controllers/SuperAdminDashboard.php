@@ -3,24 +3,45 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\DataAdminModel;
+use App\Models\DataClientModel;
+use App\Models\ProyekModel;
 
 class SuperAdminDashboard extends BaseController
 {
-    public function index()
+    protected $proyekModel;
+    protected $adminModel;
+    protected $clientModel;
+    public function __construct()
     {
-        return viewSA('dashboard/super/main');
+        $this->proyekModel = new ProyekModel();
+        $this->adminModel = new DataAdminModel();
+        $this->clientModel = new DataClientModel();
     }
 
-    public function proyek($idOwner = null, $idProyek = null, $idProgress = null)
+    public function index()
     {
-        if ($idOwner && $idProyek && $idProgress) {
+        $data = [
+            "proyek" => $this->proyekModel->getProyekWithOwner(),
+            "admin" => sizeof($this->adminModel->getUsers()),
+            "client" => sizeof($this->clientModel->getUsers()),
+        ];
+        return viewSA('dashboard/super/main', $data);
+    }
+
+    public function proyek($idProyek = null, $idProgress = null)
+    {
+        if ($idProyek && $idProgress) {
             return viewSA('dashboard/super/riwayat_progress');
-        } else if ($idOwner && $idProyek) {
+        } else if ($idProyek) {
             return viewSA('dashboard/super/progress');
-        } else if ($idOwner) {
-            return viewSA('dashboard/super/proyek');
         }
         return viewSA('dashboard/super/daftar_owner');
+    }
+
+    public function formProyek()
+    {
+        return viewSA('dashboard/super/form_proyek');
     }
 
     public function pembayaran($idProyek = null)

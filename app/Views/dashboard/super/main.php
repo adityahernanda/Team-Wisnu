@@ -27,9 +27,10 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Jumlah Proyek</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">31
-                                                Proyek
+                                                Jumlah Proyek
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?= sizeof($proyek) ?> Proyek
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -50,8 +51,8 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Jumlah Pengawas</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">35
-                                                Pengawas
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?= $admin ?> Pengawas
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -71,9 +72,10 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Jumlah Client</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">20
-                                                Client
+                                                Jumlah Client
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?= $client ?> Client
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -101,27 +103,21 @@
                 <table class="table table-bordered" id="dataTables" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No.</th>
                             <th>Owner</th>
+                            <th>Nama Pengawas</th>
+                            <th>Nama Proyek</th>
                             <th>Lokasi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Rudi Salim</td>
-                            <td>Wiyung</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Bagong</td>
-                            <td>Lidah Wetan</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Lita</td>
-                            <td>Bambe</td>
-                        </tr>
+                        <?php foreach (array_splice($proyek, 0, 3)  as $row) : ?>
+                            <tr>
+                                <td><?= $row['nama_owner'] ?></td>
+                                <td><?= $row['nama_pengawas'] ?></td>
+                                <td><?= $row['nama_proyek'] ?></td>
+                                <td><?= $row['lokasi_proyek'] ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
                 <a href="<?= base_url('/dashboard/sa/proyek') ?>" class="btn btn-danger">Show More...</a>

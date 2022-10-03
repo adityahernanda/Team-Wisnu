@@ -16,3 +16,22 @@ php spark db:seed TestSeeder    // Menjalankan seeder
 ```
 php spark serve
 ```
+
+## User Credential
+- Super Admin
+```
+sa@email.com
+123
+```
+
+- Admin
+```
+test@email.com
+123
+```
+
+- Customer
+```
+customer@email.com
+123
+```

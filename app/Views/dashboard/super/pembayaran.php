@@ -18,78 +18,28 @@
                         <thead>
                             <tr>
                                 <th>Owner</th>
+                                <th>Nama Pengawas</th>
                                 <th>Nama Proyek</th>
                                 <th>Lokasi</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <!-- <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Doddy</td>
-                                <td>Pak Nanang</td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('/dashboard/sa/pembayaran/idProyek') ?>" class="btn btn-primary">Detail</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Bagong</td>
-                                <td>Pak Tesa</td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('/dashboard/sa/pembayaran/idProyek') ?>" class="btn btn-primary">Detail</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Lita</td>
-                                <td>Pak Budi</td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('/dashboard/sa/pembayaran/idProyek') ?>" class="btn btn-primary">Detail</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Rudi Salim</td>
-                                <td>Pak Tesa</td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('/dashboard/sa/pembayaran/idProyek') ?>" class="btn btn-primary">Detail</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Marcel</td>
-                                <td>Pak Nanang</td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('/dashboard/sa/pembayaran/idProyek') ?>" class="btn btn-primary">Detail</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Salsa</td>
-                                <td>Pak Budi</td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('/dashboard/sa/pembayaran/idProyek') ?>" class="btn btn-primary">Detail</a>
-                                </td>
-                            </tr>
-                        </tbody> -->
+                        <tbody>
+
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        $.ajax({
-            url: '/action/proyek/get',
-            method: 'GET',
-            success: (res) => {
-                console.log(res);
-            }
-        })
         $('#proyekTable').DataTable({
             ajax: '/action/proyek/get',
             columns: [{
                     data: 'nama_owner'
+                },
+                {
+                    data: 'nama_pengawas'
                 },
                 {
                     data: 'nama_proyek'

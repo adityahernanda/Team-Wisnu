@@ -60,8 +60,9 @@ class ProyekModel extends Model
     public function getProyekWithOwner()
     {
         return $this->proyek
-            ->select('id_proyek, data_customer.nama AS nama_owner, proyek.nama AS nama_proyek, lokasi_proyek')
+            ->select('id_proyek, data_customer.nama AS nama_owner, data_admin.nama AS nama_pengawas, proyek.nama AS nama_proyek, lokasi_proyek')
             ->join('data_customer', 'proyek.id_customer = data_customer.id_customer')
+            ->join('data_admin', 'proyek.id_admin = data_admin.id_admin')
             ->get()
             ->getResultArray();
     }
@@ -103,8 +104,9 @@ class ProyekModel extends Model
     public function getProyekById($idProyek)
     {
         return $this->proyek
-            ->select('id_proyek, data_customer.nama AS nama_owner, proyek.nama AS nama_proyek, lokasi_proyek')
+            ->select('id_proyek, data_customer.nama AS nama_owner, data_admin.nama AS nama_pengawas, proyek.nama AS nama_proyek, lokasi_proyek')
             ->join('data_customer', 'proyek.id_customer = data_customer.id_customer')
+            ->join('data_admin', 'proyek.id_admin = data_admin.id_admin')
             ->where(['id_proyek' => $idProyek])
             ->get()
             ->getRowObject(0);

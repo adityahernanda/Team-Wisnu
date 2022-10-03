@@ -14,6 +14,11 @@
                     <td id="owner"></td>
                 </tr>
                 <tr>
+                    <th>Nama Pengawas</th>
+                    <th class="text-center" style="width: 20px;">:</th>
+                    <td id="pengawas"></td>
+                </tr>
+                <tr>
                     <th>Nama Proyek</th>
                     <th class="text-center" style="width: 20px;">:</th>
                     <td id="proyek"></td>
@@ -279,6 +284,7 @@
 
         function renderInfo(obj) {
             $('#owner').html(obj.proyek.nama_owner);
+            $('#pengawas').html(obj.proyek.nama_pengawas);
             $('#proyek').html(obj.proyek.nama_proyek);
         }
 

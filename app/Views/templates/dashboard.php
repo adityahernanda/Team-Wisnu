@@ -76,6 +76,17 @@
         <?= $this->include('inc/' . $sidebarFile) ?>
         <!-- End of Sidebar -->
 
+        <script>
+            $(document).ready(function() {
+                $('#sidebarToggleTop').on('click', function() {
+                    $('#accordionSidebar').toggleClass('toggled');
+                });
+                $('#sidebarToggle').on('click', function() {
+                    $('#accordionSidebar').toggleClass('toggled');
+                });
+            });
+        </script>
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 

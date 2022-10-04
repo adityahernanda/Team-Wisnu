@@ -15,6 +15,8 @@ class Proyek extends Seeder
                 "id_admin" => "adm-123",
                 "nama" => "Proyek 1",
                 "lokasi_proyek" => "Semolowaru Gang Buntu",
+                "selesai" => true,
+                "rab" => "no",
             ],
             [
                 "id_proyek" => "proy-666",
@@ -22,6 +24,8 @@ class Proyek extends Seeder
                 "id_admin" => "adm-123",
                 "nama" => "Proyek 2",
                 "lokasi_proyek" => "Semolowaru Gang Buntu",
+                "selesai" => false,
+                "rab" => "no",
             ],
         ];
         $this->db->table('proyek')->insertBatch($data);

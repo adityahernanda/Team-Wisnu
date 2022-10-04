@@ -31,6 +31,13 @@ class Proyek extends Migration
             'tgl_selesai' => [
                 'type' => 'DATE'
             ],
+            'selesai' => [
+                'type' => 'BOOLEAN',
+                'default' => '0'
+            ],
+            'rab' => [
+                'type' => 'VARCHAR(70)'
+            ],
         ]);
         $this->forge->addPrimaryKey('id_proyek');
         $this->forge->addForeignKey('id_customer', 'data_customer', 'id_customer');

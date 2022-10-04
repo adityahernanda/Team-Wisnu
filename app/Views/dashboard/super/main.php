@@ -21,70 +21,64 @@
 
                     <!-- Jumlah Proyek Card -->
                     <div class="col-xl-4 col-md-12 mb-4">
-                        <a href="proyekpage.html">
-                            <div class="card border-left-primary shadow h-100 py-2 card-custom">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Jumlah Proyek
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <?= sizeof($proyek) ?> Proyek
-                                            </div>
+                        <div class="card border-left-primary shadow h-100 py-2 card-custom">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Jumlah Proyek
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="bi bi-collection"></i>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <?= sizeof($proyek) ?> Proyek
                                         </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-collection"></i>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
 
                     <!-- Jumlah Pengawas Card -->
                     <div class="col-xl-4 col-md-6 mb-4">
-                        <a href="manajemenPengguna.html">
-                            <div class="card border-left-success shadow h-100 py-2 card-custom">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Jumlah Pengawas</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <?= $admin ?> Pengawas
-                                            </div>
+                        <div class="card border-left-success shadow h-100 py-2 card-custom">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Jumlah Pengawas</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <?= $admin ?> Pengawas
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="bi bi-people-fill"></i>
-                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-people-fill"></i>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
 
                     <!-- Jumlah Client Card -->
                     <div class="col-xl-4 col-md-6 mb-4">
-                        <a href="manajemenPengguna.html">
-                            <div class="card border-left-warning shadow h-100 py-2 card-custom">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Jumlah Client
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <?= $client ?> Client
-                                            </div>
+                        <div class="card border-left-warning shadow h-100 py-2 card-custom">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Jumlah Client
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="bi bi-person-fill"></i>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <?= $client ?> Client
                                         </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-person-fill"></i>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
 
                 </div> <!-- Akhir ROW -->

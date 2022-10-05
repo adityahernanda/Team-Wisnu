@@ -22,11 +22,6 @@
                             <label for="tanggalProgress">Tanggal Progress</label>
                             <input type="date" class="form-control" id="tanggalProgress" value="<?= $progress->tgl_progress ?>" readonly>
                         </div>
-                        <?php helper('format_helper'); ?>
-                        <div class="form-group">
-                            <label for="biayaKeluar">Biaya Keluar</label>
-                            <input type="text" class="form-control" id="biayaKeluar" aria-describedby="biayaKeluar" value="<?= rupiah($progress->biaya) ?>" readonly>
-                        </div>
                         <div class="form-group">
                             <label for="presentaseKerja">Presentase Pekerjaan (%)</label>
                             <input type="text" class="form-control" id="presentaseKerja" aria-describedby="presentaseKerja" value="<?= $progress->presentase ?>" readonly>
@@ -44,7 +39,7 @@
             <!-- Foto Proyek Card -->
             <div class="card shadow mb-4 foto-card">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Foto Proyek</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Foto Progress</h6>
                 </div>
                 <div class="card-body">
                     <a href="<?= base_url('assets/img/portofolio 1.jpg') ?>" data-lightbox="roadtrip">

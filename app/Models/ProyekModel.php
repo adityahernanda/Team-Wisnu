@@ -174,6 +174,18 @@ class ProyekModel extends Model
             ->get()->getResultArray();
     }
 
+    public function editProgressById($id, $nama, $tgl, $presentase, $ket)
+    {
+        $this->progress->update([
+            'nama' => $nama,
+            'tgl_progress' => $tgl,
+            'presentase' => $presentase,
+            'keterangan' => $ket,
+        ], [
+            'id_progress' => $id,
+        ]);
+    }
+
     public function getProgressById($idProgress)
     {
         return $this->progress

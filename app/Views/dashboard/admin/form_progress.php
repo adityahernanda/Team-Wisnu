@@ -4,43 +4,58 @@
 <div class="container-fluid">
     <?php
     $uri = service('uri');
+
+    $idProgress = "";
+    $ket = "";
+    $nama = "";
+    $presentase = "";
+    $tgl = "";
+    if (isset($progress)) {
+        $idProgress = $progress->id_progress;
+        $ket = $progress->keterangan;
+        $nama = $progress->nama;
+        $presentase = $progress->presentase;
+        $tgl = $progress->tgl_progress;
+    }
     ?>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800"><span style="text-transform: capitalize;"><?= $uri->getSegment(5) ?></span> Progress</h1>
     </div>
 
-    <form method="POST" enctype="multipart/form-data" action="/action/progress/add">
+    <form method="POST" enctype="multipart/form-data" action="/action/progress/<?= $uri->getSegment(5) ?>">
         <div class="row">
             <div class="col">
                 <div class="form-group">
                     <label for="namaProgress">Nama Progress</label>
-                    <input name="nama" type="text" class="form-control" id="namaProgress" aria-describedby="namaProgress" autofocus>
+                    <input value="<?= $nama ?>" name="nama" type="text" class="form-control" id="namaProgress" aria-describedby="namaProgress" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="tanggalProgress">Tanggal Progress</label>
-                    <input name="tgl" type="date" class="form-control" id="tanggalProgress" aria-describedby="tanggalProgress">
+                    <input value="<?= $tgl ?>" name="tgl" type="date" class="form-control" id="tanggalProgress" aria-describedby="tanggalProgress">
                 </div>
                 <div class="form-group">
                     <label for="presentaseProgress">Presentase Pekerjaan</label>
-                    <input name="presentase" type="number" class="form-control" id="presentaseProgress" aria-describedby="presentaseProgress">
+                    <input value="<?= $presentase ?>" name="presentase" type="number" class="form-control" id="presentaseProgress" aria-describedby="presentaseProgress">
                 </div>
                 <div class="form-group">
                     <label for="keteranganProgress">Keterangan</label>
-                    <textarea name="ket" class="form-control" id="keteranganProgress" aria-describedby="keteranganProgress" cols="30" rows="5"></textarea>
+                    <textarea name="ket" class="form-control" id="keteranganProgress" aria-describedby="keteranganProgress" cols="30" rows="5"><?= $ket ?></textarea>
                 </div>
             </div>
-
             <div class="col">
-                <div class="container-upload">
-                    <div class="form-group">
-                        <label for="uploadGambar">Upload Gambar</label>
-                        <input name="gambar[]" multiple size="8" type="file" accept=".jpg,.jpeg,.png" class="form-control-file" id="uploadGambar">
+                <?php if ($uri->getSegment(5) == "add") : ?>
+                    <div class="container-upload">
+                        <div class="form-group">
+                            <label for="uploadGambar">Upload Gambar</label>
+                            <input name="gambar[]" multiple size="8" type="file" accept=".jpg,.jpeg,.png" class="form-control-file" id="uploadGambar">
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
         <input type="hidden" name="id" value="<?= $uri->getSegment(4) ?>">
+        <input type="hidden" name="id_progress" value="<?= $idProgress ?>">
         <button type="submit" class="btn btn-primary my-2">Simpan</button>
     </form>
     <script>

@@ -72,7 +72,7 @@ if (isset($proyek)) {
                         return `
                             <td class="text-center">
                                 <?php if ($view) : ?>
-                                <a href="editProgress.html" class="btn btn-warning">Edit</a>
+                                <a href="<?= base_url('/dashboard/admin/proyek/' . $idProyek) ?>/edit/${data}" class="btn btn-warning">Edit</a>
                                 <?php endif; ?>
                                 <a href="<?= base_url('/dashboard/admin/proyek/' . $idProyek) ?>/${data}" class="btn btn-primary">Details</a>
                             </td>

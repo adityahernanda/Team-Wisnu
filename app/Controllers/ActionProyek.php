@@ -169,6 +169,26 @@ class ActionProyek extends BaseController
         // ]);
     }
 
+    public function editProgress()
+    {
+        $idProyek = $this->request->getVar('id');
+        $idProgress = $this->request->getVar('id_progress');
+        $nama = $this->request->getVar('nama');
+        $tgl = $this->request->getVar('tgl');
+        $presentase = $this->request->getVar('presentase');
+        $ket = $this->request->getVar('ket');
+
+        $idProgress = $this->modelProyek->editProgressById(
+            $idProgress,
+            $nama,
+            $tgl,
+            $presentase,
+            $ket
+        );
+
+        $this->response->redirect('/dashboard/admin/proyek/' . $idProyek);
+    }
+
     // ADMIN PAKAI
     public function getProyekByIdAdmin()
     {

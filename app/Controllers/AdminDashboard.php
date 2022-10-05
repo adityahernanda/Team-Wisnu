@@ -46,9 +46,13 @@ class AdminDashboard extends BaseController
         return viewAdmin('dashboard/admin/proyek');
     }
 
-    public function formProgress()
+    public function formProgress($idProgress = null)
     {
-        return viewAdmin('dashboard/admin/form_progress');
+        $progress = $this->modelProyek->getProgressById($idProgress);
+        $data = [
+            'progress' => $progress
+        ];
+        return viewAdmin('dashboard/admin/form_progress', $data);
     }
 
     public function profile()

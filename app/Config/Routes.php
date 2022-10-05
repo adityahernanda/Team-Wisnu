@@ -66,6 +66,7 @@ $routes->group('dashboard', function ($routes) {
         $routes->get('/', 'AdminDashboard::index');
         $routes->get('proyek', 'AdminDashboard::proyek');
         $routes->get('proyek/(:any)/add', 'AdminDashboard::formProgress');
+        $routes->get('proyek/(:any)/edit/(:any)', 'AdminDashboard::formProgress/$2');
         $routes->get('proyek/(:any)', 'AdminDashboard::proyek/$1');
         $routes->get('proyek/(:any)/(:any)', 'AdminDashboard::proyek/$1/$2');
         $routes->get('profile', 'AdminDashboard::profile');
@@ -114,6 +115,7 @@ $routes->group('action', function ($routes) {
         $routes->get('/', 'ActionProyek::getProgress');
         $routes->post('/', 'ActionProyek::getProgressByIdProyek');
         $routes->post('add', 'ActionProyek::addProgress');
+        $routes->post('edit', 'ActionProyek::editProgress');
         $routes->get('(:any)', 'ActionProyek::getProgress/$1');
     });
     $routes->group('pembayaran', function ($routes) {

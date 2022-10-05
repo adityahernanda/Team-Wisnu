@@ -15,7 +15,7 @@ class Proyek extends Seeder
                 "id_admin" => "adm-123",
                 "nama" => "Proyek 1",
                 "lokasi_proyek" => "Semolowaru Gang Buntu",
-                "selesai" => true,
+                "status" => "Dikerjakan",
                 "rab" => "no",
             ],
             [
@@ -24,7 +24,16 @@ class Proyek extends Seeder
                 "id_admin" => "adm-123",
                 "nama" => "Proyek 2",
                 "lokasi_proyek" => "Semolowaru Gang Buntu",
-                "selesai" => false,
+                "status" => "Selesai",
+                "rab" => "no",
+            ],
+            [
+                "id_proyek" => "proy-111",
+                "id_customer" => "cust-123",
+                "id_admin" => "adm-123",
+                "nama" => "Proyek Cancelled",
+                "lokasi_proyek" => "Wiyung",
+                "status" => "Cancelled",
                 "rab" => "no",
             ],
         ];

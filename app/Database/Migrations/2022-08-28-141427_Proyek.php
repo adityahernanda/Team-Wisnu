@@ -31,9 +31,9 @@ class Proyek extends Migration
             'tgl_selesai' => [
                 'type' => 'DATE'
             ],
-            'selesai' => [
-                'type' => 'BOOLEAN',
-                'default' => '0'
+            'status' => [
+                'type' => 'VARCHAR(10)',
+                'default' => 'Dikerjakan'
             ],
             'rab' => [
                 'type' => 'VARCHAR(70)'

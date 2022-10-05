@@ -30,7 +30,7 @@
                         <div class="modal-body">
                             <form id="tambahPengguna" method="POST" action="/action/client/add">
                                 <div class="form-group">
-                                    <label for="tambahAkunUsername">Username</label>
+                                    <label for="tambahAkunUsername">Nama</label>
                                     <input name="nama" type="text" class="form-control" id="tambahAkunUsername" aria-describedby="tambahAkunUsername" autofocus required>
                                 </div>
                                 <div class="form-group">

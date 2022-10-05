@@ -13,11 +13,11 @@ class TestSeeder extends Seeder
         $this->call('LoginCustomer');
         $this->call('DataCustomer');
         $this->call('Proyek');
-        $this->call('Foto');
         $this->call('Pembayaran');
         $this->call('JenisPekerjaan');
         $this->call('Rab');
         $this->call('Progress');
         $this->call('Portofolio');
+        $this->call('Foto');
     }
 }

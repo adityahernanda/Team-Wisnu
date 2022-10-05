@@ -13,7 +13,7 @@ class Foto extends Migration
                 'type' => 'VARCHAR(25)',
                 'null' => false
             ],
-            'id_proyek' => [
+            'id_progress' => [
                 'type' => 'VARCHAR(25)',
             ],
             'url_foto' => [
@@ -22,7 +22,7 @@ class Foto extends Migration
             'tgl datetime default current_timestamp'
         ]);
         $this->forge->addPrimaryKey('id_foto');
-        $this->forge->addForeignKey('id_proyek', 'proyek', 'id_proyek');
+        $this->forge->addForeignKey('id_progress', 'progress', 'id_progress');
         $this->forge->createTable('foto');
     }
 

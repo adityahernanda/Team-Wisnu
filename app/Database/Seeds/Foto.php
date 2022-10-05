@@ -11,7 +11,7 @@ class Foto extends Seeder
         $data = [
             [
                 "id_foto" => "foto-123",
-                "id_proyek" => "proy-123",
+                "id_progress" => "prog-123",
                 "url_foto" => "ini_url",
             ]
         ];

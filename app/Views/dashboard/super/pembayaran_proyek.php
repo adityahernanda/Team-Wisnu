@@ -146,41 +146,15 @@
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
-                            <!-- <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2011/04/25</td>
-                                    <td>5.000.000</td>
-                                    <td>Bayar dana tukang</td>
-                                    <td>
-                                        <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#hapusModal">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>2022/04/25</td>
-                                    <td>1.500.000</td>
-                                    <td>Bayar dana pengelasan besi</td>
-                                    <td>
-                                        <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#hapusModal">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>2015/04/25</td>
-                                    <td>8.000.000</td>
-                                    <td>Pengecatan Dinding Kamar Tidur</td>
-                                    <td>
-                                        <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#hapusModal">Delete</a>
-                                    </td>
-                                </tr>
-                            </tbody> -->
+                            <tbody>
+
+                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
             <h5>File Rancang Anggaran Bangun</h5>
-            <a href="" class="btn btn-outline-primary mb-4">Unduh</a>
+            <a href="<?= base_url('uploads/rab/' . $proyek->rab) ?>" download="RAB <?= $proyek->nama_proyek ?>" class="btn btn-outline-primary mb-4">Unduh</a>
         </div>
     </div>
 
@@ -198,10 +172,6 @@
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="/action/pembayaran/add">
-                        <div class="form-group">
-                            <label for="tambahRABTanggal">Tanggal Bayar</label>
-                            <input name="tgl" type="date" class="form-control" id="tambahRABTanggal" aria-describedby="tambahRABTanggal" required>
-                        </div>
                         <div class="form-group">
                             <label for="tambahRABNominal">Nominal</label>
                             <input name="jumlah" type="text" class="form-control" id="tambahRABNominal" aria-describedby="tambahRABNominal" autofocus required>

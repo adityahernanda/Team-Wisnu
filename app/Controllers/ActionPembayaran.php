@@ -23,7 +23,7 @@ class ActionPembayaran extends BaseController
         $id = $this->request->getVar('id_proyek');
         $proyek = $this->modelProyek->getProyekById($id);
         $terbayar = $this->modelPembayaran->getTerbayarByIdProyek($id);
-        $anggaran = $this->modelProyek->getAnggaranByIdProyek($id);
+        $anggaran = $proyek->biaya;
 
         return json_encode([
             "proyek" => $proyek,
@@ -38,13 +38,11 @@ class ActionPembayaran extends BaseController
         $idProyek = $this->request->getVar('id_proyek');
         $jumlah = $this->request->getVar('jumlah');
         $ket = $this->request->getVar('ket');
-        $tgl = $this->request->getVar('tgl');
 
         $this->modelPembayaran->addPembayaran(
             $idProyek,
             $jumlah,
             $ket,
-            $tgl,
         );
         $this->response->redirect('/dashboard/sa/pembayaran/' . $idProyek);
     }

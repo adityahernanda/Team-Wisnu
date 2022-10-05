@@ -153,16 +153,6 @@ class ProyekModel extends Model
             ->get()->getRowObject(0);
     }
 
-    public function getAnggaranByIdProyek($idProyek)
-    {
-        return $this->progress
-            ->selectSum('biaya', 'anggaran')
-            ->where(['id_proyek' => $idProyek])
-            ->get()
-            ->getRowObject(0)
-            ->anggaran;
-    }
-
     public function editProyek($idProyek, $idCustomer, $idAdmin, $nama, $lokasi, $biaya, $tglMulai, $tglSelesai, $rab = null)
     {
         if ($rab) {

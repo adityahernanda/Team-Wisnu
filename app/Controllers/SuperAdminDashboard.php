@@ -61,7 +61,11 @@ class SuperAdminDashboard extends BaseController
     public function pembayaran($idProyek = null)
     {
         if ($idProyek) {
-            return viewSA('dashboard/super/pembayaran_proyek');
+            $proyek = $this->proyekModel->getProyekById($idProyek);
+            $data = [
+                'proyek' => $proyek
+            ];
+            return viewSA('dashboard/super/pembayaran_proyek', $data);
         }
         return viewSA('dashboard/super/pembayaran');
     }

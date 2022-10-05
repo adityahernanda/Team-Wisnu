@@ -47,14 +47,13 @@ class PembayaranModel extends Model
         $this->db = Database::connect()->table('pembayaran');
     }
 
-    public function addPembayaran($idProyek, $jumlah, $ket, $tgl)
+    public function addPembayaran($idProyek, $jumlah, $ket)
     {
         $this->db->insert([
             "id_pembayaran" => "pemb-" . bin2hex(random_bytes(8)),
             "id_proyek" => $idProyek,
             "jumlah" => $jumlah,
             "ket" => $ket,
-            "tgl" => $tgl,
         ]);
     }
 

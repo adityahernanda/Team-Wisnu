@@ -20,9 +20,6 @@ class Progress extends Migration
                 'type' => 'VARCHAR(30)'
             ],
             'tgl_progress date default now()',
-            'biaya' => [
-                'type' => 'INT'
-            ],
             'presentase' => [
                 'type' => 'VARCHAR(3)'
             ],

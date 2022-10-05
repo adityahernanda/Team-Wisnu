@@ -31,6 +31,9 @@ class Proyek extends Migration
             'tgl_selesai' => [
                 'type' => 'DATE'
             ],
+            'biaya' => [
+                'type' => 'INT'
+            ],
             'status' => [
                 'type' => 'VARCHAR(10)',
                 'default' => 'Dikerjakan'

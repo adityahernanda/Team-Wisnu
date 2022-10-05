@@ -13,7 +13,6 @@ class Progress extends Seeder
                 "id_progress" => "prog-123",
                 "id_proyek" => "proy-123",
                 "nama" => "Pasang ubin",
-                'biaya' => 5000000,
                 'presentase' => 50,
                 'keterangan' => 'Terpakai 5 sisa 6',
             ],
@@ -21,7 +20,6 @@ class Progress extends Seeder
                 "id_progress" => "prog-666",
                 "id_proyek" => "proy-666",
                 "nama" => "Pasang Jendela",
-                'biaya' => 10000000,
                 'presentase' => 50,
                 'keterangan' => 'Terpakai 5 sisa 6',
             ]

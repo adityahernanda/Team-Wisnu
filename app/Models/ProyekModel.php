@@ -119,24 +119,52 @@ class ProyekModel extends Model
             ->get()->getResultArray();
     }
 
-    public function getProyekByIdAdmin($idAdmin)
+    public function getProyekByIdAdmin($idAdmin, $status = null)
     {
-        return $this->proyek
-            ->select('id_proyek, data_customer.nama AS nama_owner, proyek.nama, lokasi_proyek, tgl_mulai, tgl_selesai')
-            ->where(['id_admin' => $idAdmin])
-            ->join('data_customer', 'data_customer.id_customer = proyek.id_customer')
-            ->get()->getResultArray();
+        if ($status) {
+            return $this->proyek
+                ->select('id_proyek, data_customer.nama AS nama_owner, proyek.nama, lokasi_proyek, tgl_mulai, tgl_selesai, status')
+                ->where([
+                    'id_admin' => $idAdmin,
+                    'status !=' => 'Dikerjakan',
+                ])
+                ->join('data_customer', 'data_customer.id_customer = proyek.id_customer')
+                ->get()->getResultArray();
+        } else {
+            return $this->proyek
+                ->select('id_proyek, data_customer.nama AS nama_owner, proyek.nama, lokasi_proyek, tgl_mulai, tgl_selesai, status')
+                ->where([
+                    'id_admin' => $idAdmin,
+                    'status' => 'Dikerjakan',
+                ])
+                ->join('data_customer', 'data_customer.id_customer = proyek.id_customer')
+                ->get()->getResultArray();
+        }
     }
 
     public function getProyekById($idProyek)
     {
         return $this->proyek
-            ->select('proyek.id_admin, proyek.id_customer, proyek.biaya, proyek.tgl_mulai, proyek.tgl_selesai, id_proyek, data_customer.nama AS nama_owner, data_admin.nama AS nama_pengawas, proyek.nama AS nama_proyek, lokasi_proyek, rab')
+            ->select('proyek.id_admin, proyek.id_customer, proyek.biaya, proyek.tgl_mulai, proyek.tgl_selesai, id_proyek, data_customer.nama AS nama_owner, data_admin.nama AS nama_pengawas, proyek.nama AS nama_proyek, lokasi_proyek, rab, status')
             ->join('data_customer', 'proyek.id_customer = data_customer.id_customer')
             ->join('data_admin', 'proyek.id_admin = data_admin.id_admin')
             ->where(['id_proyek' => $idProyek])
             ->get()
             ->getRowObject(0);
+    }
+
+    public function addProgressByIdProyek($idProyek, $nama, $tgl, $presentase, $ket)
+    {
+        $generatedId = 'prog-' . bin2hex(random_bytes(8));
+        $this->progress->insert([
+            'id_progress' => $generatedId,
+            'id_proyek' => $idProyek,
+            'nama' => $nama,
+            'tgl_progress' => $tgl,
+            'presentase' => $presentase,
+            'keterangan' => $ket,
+        ]);
+        return $generatedId;
     }
 
     public function getProgressByIdProyek($idProyek)

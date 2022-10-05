@@ -42,24 +42,11 @@
                     <h6 class="m-0 font-weight-bold text-primary">Foto Progress</h6>
                 </div>
                 <div class="card-body">
-                    <a href="<?= base_url('assets/img/portofolio 1.jpg') ?>" data-lightbox="roadtrip">
-                        <img class="mb-3" src="<?= base_url('assets/img/portofolio 1.jpg') ?>" width="100" height="100" alt="">
-                    </a>
-                    <a href="<?= base_url('assets/img/portofolio 2.jpg') ?>" data-lightbox="roadtrip">
-                        <img class="mb-3" src="<?= base_url('assets/img/portofolio 2.jpg') ?>" width="100" height="100" alt="">
-                    </a>
-                    <a href="<?= base_url('assets/img/portofolio 3.jpg') ?>" data-lightbox="roadtrip">
-                        <img class="mb-3" src="<?= base_url('assets/img/portofolio 3.jpg') ?>" width="100" height="100" alt="">
-                    </a>
-                    <a href="<?= base_url('assets/img/portofolio 5.jpg') ?>" data-lightbox="roadtrip">
-                        <img class="mb-3" src="<?= base_url('assets/img/portofolio 5.jpg') ?>" width="100" height="100" alt="">
-                    </a>
-                    <a href="<?= base_url('assets/img/portofolio 6.jpg') ?>" data-lightbox="roadtrip">
-                        <img class="mb-3" src="<?= base_url('assets/img/portofolio 6.jpg') ?>" width="100" height="100" alt="">
-                    </a>
-                    <a href="<?= base_url('assets/img/portofolio 4.jpg') ?>" data-lightbox="roadtrip">
-                        <img class="mb-3" src="<?= base_url('assets/img/portofolio 4.jpg') ?>" width="100" height="100" alt="">
-                    </a>
+                    <?php foreach ($foto as $row) : ?>
+                        <a href="<?= base_url('uploads/progress/' . $row['url_foto']) ?>" data-lightbox="roadtrip">
+                            <img class="mb-3" src="<?= base_url('uploads/progress/' . $row['url_foto']) ?>" width="100" height="100" alt="">
+                        </a>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

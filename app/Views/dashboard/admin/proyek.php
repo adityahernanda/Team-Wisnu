@@ -8,35 +8,69 @@
         <h1 class="h3 mb-0 text-gray-800">Proyek</h1>
     </div>
 
-    <!-- Owner Proyek Tabel -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <div class="row">
-                <div class="col d-flex justify-content-start align-items-center">
-                    <h6 class="m-0 font-weight-bold text-primary">Daftar Proyek</h6>
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <!-- Daftar Proyek -->
+            <button class="nav-link active" id="nav-daftarProyek-tab" data-toggle="tab" data-target="#nav-daftarProyek" type="button" role="tab" aria-controls="nav-daftarProyek aria-selected=" true">Daftar
+                Proyek
+            </button>
+
+            <!-- Riwayat Proyek -->
+            <button class="nav-link" id="nav-riwayatProyek-tab" data-toggle="tab" data-target="#nav-riwayatProyek" type="button" role="tab" aria-controls="nav-riwayatProyek" aria-selected="false">Daftar
+                Riwayat Proyek
+            </button>
+    </nav>
+
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-daftarProyek" role="tabpanel" aria-labelledby="nav-daftarProyek-tab">
+            <!-- Owner Proyek Tabel -->
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="proyekTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Nama Owner</th>
+                                    <th>Nama Proyek</th>
+                                    <th>Lokasi</th>
+                                    <th>Tanggal Mulai</th>
+                                    <th>Tanggal Selesai</th>
+                                    <th>Detail</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="proyekTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Nama Owner</th>
-                            <th>Nama Proyek</th>
-                            <th>Lokasi</th>
-                            <th>Tanggal Mulai</th>
-                            <th>Tanggal Selesai</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+        <div class="tab-pane fade" id="nav-riwayatProyek" role="tabpanel" aria-labelledby="nav-daftarProyek-tab">
+            <!-- Owner Proyek Tabel -->
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="riwayatTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Nama Owner</th>
+                                    <th>Nama Proyek</th>
+                                    <th>Lokasi</th>
+                                    <th>Status</th>
+                                    <th>Detail</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                    </tbody>
-                </table>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
     <script>
         $('#proyekTable').DataTable({
             ajax: {
@@ -60,6 +94,40 @@
                 },
                 {
                     data: 'tgl_selesai'
+                },
+                {
+                    data: 'id_proyek',
+                    render: (data) => {
+                        return `
+                            <td class="text-center">
+                                <a href="<?= base_url('/dashboard/admin/proyek') ?>/${data}" class="btn btn-primary">Lihat</a>
+                            </td>
+                        `;
+                    }
+                },
+            ]
+        });
+
+        $('#riwayatTable').DataTable({
+            ajax: {
+                url: '/action/proyek/admin',
+                type: 'POST',
+                data: {
+                    id: '<?= $_SESSION['id'] ?>',
+                    status: 'selesai'
+                }
+            },
+            columns: [{
+                    data: 'nama_owner'
+                },
+                {
+                    data: 'nama'
+                },
+                {
+                    data: 'lokasi_proyek'
+                },
+                {
+                    data: 'status'
                 },
                 {
                     data: 'id_proyek',

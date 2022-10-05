@@ -3,15 +3,18 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\FotoModel;
 use App\Models\ProyekModel;
 
 class AdminDashboard extends BaseController
 {
     protected $modelProyek;
+    protected $modelFoto;
 
     public function __construct()
     {
         $this->modelProyek = new ProyekModel();
+        $this->modelFoto = new FotoModel();
     }
 
     public function index()
@@ -27,14 +30,25 @@ class AdminDashboard extends BaseController
     {
         if ($idProyek && $idProgress) {
             $progress = $this->modelProyek->getProgressById($idProgress);
+            $foto = $this->modelFoto->getFotoByProgressId($idProgress);
             $data = [
-                'progress' => $progress
+                'progress' => $progress,
+                'foto' => $foto,
             ];
             return viewAdmin('dashboard/admin/detail_progress', $data);
         } else if ($idProyek) {
-            return viewAdmin('dashboard/admin/progress');
+            $proyek =  $this->modelProyek->getProyekById($idProyek);
+            $data = [
+                'proyek' => $proyek
+            ];
+            return viewAdmin('dashboard/admin/progress', $data);
         }
         return viewAdmin('dashboard/admin/proyek');
+    }
+
+    public function formProgress()
+    {
+        return viewAdmin('dashboard/admin/form_progress');
     }
 
     public function profile()

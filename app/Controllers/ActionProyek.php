@@ -3,21 +3,24 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\FotoModel;
 use App\Models\ProyekModel;
 
 class ActionProyek extends BaseController
 {
 
-    protected $model;
+    protected $modelProyek;
+    protected $modelFoto;
     public function __construct()
     {
-        $this->model = new ProyekModel();
+        $this->modelProyek = new ProyekModel();
+        $this->modelFoto = new FotoModel();
     }
 
     public function getCardData()
     {
         $id = $this->request->getVar('id_proyek');
-        $proyek = $this->model->getProyekById($id);
+        $proyek = $this->modelProyek->getProyekById($id);
 
         $now = date_create();
         $tgl_selesai = date_create($proyek->tgl_selesai);
@@ -43,7 +46,7 @@ class ActionProyek extends BaseController
 
         $rabName = uploadFile($rab, 'rab');
 
-        $this->model->addProyek(
+        $this->modelProyek->addProyek(
             $id_customer,
             $id_admin,
             $nama,
@@ -69,9 +72,9 @@ class ActionProyek extends BaseController
         $rab = $this->request->getFile('rab');
 
         if ($rab->getError() != 4) {
-            $oldRab = $this->model->getProyekById($id)->rab;
+            $oldRab = $this->modelProyek->getProyekById($id)->rab;
             $rabName = editFile($rab, 'rab', $oldRab);
-            $this->model->editProyek(
+            $this->modelProyek->editProyek(
                 $id,
                 $id_customer,
                 $id_admin,
@@ -83,7 +86,7 @@ class ActionProyek extends BaseController
                 $rabName
             );
         } else {
-            $this->model->editProyek(
+            $this->modelProyek->editProyek(
                 $id,
                 $id_customer,
                 $id_admin,
@@ -99,7 +102,7 @@ class ActionProyek extends BaseController
 
     public function getProyekWithOwner()
     {
-        $proyek = $this->model->getProyekWithOwner();
+        $proyek = $this->modelProyek->getProyekWithOwner();
         return json_encode([
             "data" => $proyek
         ]);
@@ -107,7 +110,7 @@ class ActionProyek extends BaseController
 
     public function getProyekWithOwnerSelesai()
     {
-        $proyek = $this->model->getProyekWithOwnerSelesai();
+        $proyek = $this->modelProyek->getProyekWithOwnerSelesai();
         return json_encode([
             "data" => $proyek
         ]);
@@ -117,19 +120,44 @@ class ActionProyek extends BaseController
     {
         if ($idCustomer) {
             return json_encode([
-                "data" => $this->model->getProyekByIdCustomer($idCustomer)
+                "data" => $this->modelProyek->getProyekByIdCustomer($idCustomer)
             ]);
         }
         return json_encode([
-            "data" => $this->model->getProyek()
+            "data" => $this->modelProyek->getProyek()
         ]);
+    }
+
+    public function addProgress()
+    {
+        $idProyek = $this->request->getVar('id');
+        $nama = $this->request->getVar('nama');
+        $tgl = $this->request->getVar('tgl');
+        $presentase = $this->request->getVar('presentase');
+        $ket = $this->request->getVar('ket');
+
+        $files = $this->request->getFileMultiple('gambar');
+        $idProgress = $this->modelProyek->addProgressByIdProyek(
+            $idProyek,
+            $nama,
+            $tgl,
+            $presentase,
+            $ket
+        );
+
+        foreach ($files as $file) {
+            $imgName = uploadFile($file, 'progress');
+            $this->modelFoto->addFoto($idProgress, $imgName);
+        }
+
+        $this->response->redirect('/dashboard/admin/proyek/' . $idProyek);
     }
 
     public function getProgress($idProyek = null)
     {
         if ($idProyek) {
-            $progress = $this->model->getProgressByIdProyek($idProyek);
-            $owner = $this->model->getProyekOwnerById($idProyek);
+            $progress = $this->modelProyek->getProgressByIdProyek($idProyek);
+            $owner = $this->modelProyek->getProyekOwnerById($idProyek);
             if ($owner == $_SESSION['id']) {
                 return json_encode([
                     "data" => $progress
@@ -137,7 +165,7 @@ class ActionProyek extends BaseController
             }
         }
         // return json_encode([
-        //     "data" => $this->model->getProgress()
+        //     "data" => $this->modelProyek->getProgress()
         // ]);
     }
 
@@ -145,8 +173,9 @@ class ActionProyek extends BaseController
     public function getProyekByIdAdmin()
     {
         $idAdmin = $this->request->getVar('id');
+        $status = $this->request->getVar('status');
         return json_encode([
-            "data" => $this->model->getProyekByIdAdmin($idAdmin)
+            "data" => $this->modelProyek->getProyekByIdAdmin($idAdmin, $status)
         ]);
     }
 
@@ -154,8 +183,8 @@ class ActionProyek extends BaseController
     {
         $idProyek = $this->request->getVar('id');
         if ($idProyek) {
-            $progress = $this->model->getProgressByIdProyek($idProyek);
-            $admin = $this->model->getProyekAdminById($idProyek);
+            $progress = $this->modelProyek->getProgressByIdProyek($idProyek);
+            $admin = $this->modelProyek->getProyekAdminById($idProyek);
             if ($admin == $_SESSION['id'] || $_SESSION['role'] == "sa") {
                 return json_encode([
                     "data" => $progress
@@ -177,7 +206,7 @@ class ActionProyek extends BaseController
             $status = "Cancelled";
         }
 
-        $this->model->updateStatusByProyekId(
+        $this->modelProyek->updateStatusByProyekId(
             $id,
             $status
         );

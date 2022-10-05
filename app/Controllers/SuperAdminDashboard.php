@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\DataAdminModel;
 use App\Models\DataClientModel;
+use App\Models\FotoModel;
 use App\Models\ProyekModel;
 
 class SuperAdminDashboard extends BaseController
@@ -12,11 +13,13 @@ class SuperAdminDashboard extends BaseController
     protected $proyekModel;
     protected $adminModel;
     protected $clientModel;
+    protected $fotoModel;
     public function __construct()
     {
         $this->proyekModel = new ProyekModel();
         $this->adminModel = new DataAdminModel();
         $this->clientModel = new DataClientModel();
+        $this->fotoModel = new FotoModel();
     }
 
     public function index()
@@ -33,8 +36,10 @@ class SuperAdminDashboard extends BaseController
     {
         if ($idProyek && $idProgress) {
             $progress = $this->proyekModel->getProgressById($idProgress);
+            $foto = $this->fotoModel->getFotoByProgressId($idProgress);
             $data = [
-                'progress' => $progress
+                'progress' => $progress,
+                'foto' => $foto,
             ];
             return viewSA('dashboard/super/detail_progress', $data);
         } else if ($idProyek) {

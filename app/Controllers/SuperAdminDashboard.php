@@ -40,7 +40,7 @@ class SuperAdminDashboard extends BaseController
         } else if ($idProyek) {
             return viewSA('dashboard/super/progress');
         }
-        return viewSA('dashboard/super/daftar_owner');
+        return viewSA('dashboard/super/proyek');
     }
 
     public function formProyek($idProyek = null)

@@ -25,66 +25,20 @@
             <!-- Proyek Tabel -->
             <div class="card shadow mb-4">
                 <div class="card-body">
-                    <a href="tambahDataProyek.html" class="btn btn-danger mb-3">Tambah Proyek</a>
+                    <a href="<?= base_url('/dashboard/sa/proyek/add') ?>" class="btn btn-danger mb-3">Tambah Proyek</a>
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered" id="proyekTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
                                     <th>Owner</th>
-                                    <th>Pengawas</th>
+                                    <th>Nama Pengawas</th>
+                                    <th>Nama Proyek</th>
+                                    <th>Lokasi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Doddy</td>
-                                    <td>Pak Nanang</td>
-                                    <td class="text-center">
-                                        <a href="<?= base_url('/dashboard/sa/proyek/idOwner') ?>" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Bagong</td>
-                                    <td>Pak Tesa</td>
-                                    <td class="text-center">
-                                        <a href="<?= base_url('/dashboard/sa/proyek/idOwner') ?>" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Lita</td>
-                                    <td>Pak Budi</td>
-                                    <td class="text-center">
-                                        <a href="<?= base_url('/dashboard/sa/proyek/idOwner') ?>" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Rudi Salim</td>
-                                    <td>Pak Tesa</td>
-                                    <td class="text-center">
-                                        <a href="<?= base_url('/dashboard/sa/proyek/idOwner') ?>" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Marcel</td>
-                                    <td>Pak Nanang</td>
-                                    <td class="text-center">
-                                        <a href="<?= base_url('/dashboard/sa/proyek/idOwner') ?>" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Salsa</td>
-                                    <td>Pak Budi</td>
-                                    <td class="text-center">
-                                        <a href="<?= base_url('/dashboard/sa/proyek/idOwner') ?>" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -98,56 +52,21 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered" id="proyekTableSelesai" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
-                                    <th>Nama Proyek</th>
                                     <th>Owner</th>
-                                    <th>Total Pembayaran</th>
-                                    <th>Tanggal</th>
+                                    <th>Nama Pengawas</th>
+                                    <th>Nama Proyek</th>
                                     <th>Lokasi</th>
-                                    <th>Pengawas</th>
+                                    <th>Status</th>
+                                    <!-- <th>Total Pembayaran</th> -->
+                                    <!-- <th>Tanggal</th> -->
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Rumah Mahal</td>
-                                    <td>Rudi Salim</td>
-                                    <td>5.000.000</td>
-                                    <td>2011/04/25</td>
-                                    <td>Wiyung</td>
-                                    <td>Pak Tesa</td>
-                                    <td>
-                                        <a href="<?= base_url('/dashboard/sa/proyek/idOwner/idProyek/idProgress') ?>" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Rumah Sedang</td>
-                                    <td>Sulaiman</td>
-                                    <td>25.000.000</td>
-                                    <td>2015/04/25</td>
-                                    <td>Ketintang</td>
-                                    <td>Pak Bowo</td>
-                                    <td>
-                                        <a href="<?= base_url('/dashboard/sa/proyek/idOwner/idProyek/idProgress') ?>" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Rumah Murah</td>
-                                    <td>Salsa</td>
-                                    <td>3.000.000</td>
-                                    <td>2022/09/12</td>
-                                    <td>Mastrip</td>
-                                    <td>Pak Jarwo</td>
-                                    <td>
-                                        <a href="<?= base_url('/dashboard/sa/proyek/idOwner/idProyek/idProgress') ?>" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -155,7 +74,88 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="updateStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Status</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Update status proyek <b id="proyekNama"></b></div>
+                <div class="modal-footer">
+                    <form action="/action/proyek/update" method="post">
+                        <input type="hidden" name="id" id="proyekId">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button type="submit" name="selesai" class="btn btn-success">Selesai</button>
+                        <button type="submit" name="cancelled" class="btn btn-danger">Cancelled</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function updateModal(id, nama) {
+            $('#proyekId').val(id);
+            $('#proyekNama').html(nama);
+            $('#updateStatus').modal();
+        }
+        $('#proyekTable').DataTable({
+            ajax: '/action/proyek/get',
+            columns: [{
+                    data: 'nama_owner'
+                },
+                {
+                    data: 'nama_pengawas'
+                },
+                {
+                    data: 'nama_proyek'
+                },
+                {
+                    data: 'lokasi_proyek'
+                },
+                {
+                    data: 'id_proyek',
+                    render: (data, type, row) => {
+                        return `
+                            <button onclick="updateModal('${data}','${row.nama_proyek}')" class="btn btn-danger">Status</button>
+                            <a href="<?= base_url('/dashboard/sa/proyek/edit') ?>/${data}" class="btn btn-warning">Edit</a>
+                            <a href="<?= base_url('/dashboard/sa/proyek') ?>/${data}" class="btn btn-primary">Detail</a>
+                        `;
+                    }
+                },
+            ]
+        });
 
+        $('#proyekTableSelesai').DataTable({
+            ajax: '/action/proyek/get/selesai',
+            columns: [{
+                    data: 'nama_owner'
+                },
+                {
+                    data: 'nama_pengawas'
+                },
+                {
+                    data: 'nama_proyek'
+                },
+                {
+                    data: 'lokasi_proyek'
+                },
+                {
+                    data: 'status'
+                },
+                {
+                    data: 'id_proyek',
+                    render: (data) => {
+                        return `
+                            <a href="<?= base_url('/dashboard/sa/proyek/idOwner/idProyek/idProgress') ?>" class="btn btn-primary">Detail</a>
+                        `;
+                    }
+                },
+            ]
+        });
+    </script>
 </div>
 <!-- /.container-fluid -->
 <?= $this->endSection() ?>

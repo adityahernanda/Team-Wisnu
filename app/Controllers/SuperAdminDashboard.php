@@ -32,16 +32,30 @@ class SuperAdminDashboard extends BaseController
     public function proyek($idProyek = null, $idProgress = null)
     {
         if ($idProyek && $idProgress) {
-            return viewSA('dashboard/super/riwayat_progress');
+            $progress = $this->proyekModel->getProgressById($idProgress);
+            $data = [
+                'progress' => $progress
+            ];
+            return viewSA('dashboard/super/detail_progress', $data);
         } else if ($idProyek) {
             return viewSA('dashboard/super/progress');
         }
         return viewSA('dashboard/super/daftar_owner');
     }
 
-    public function formProyek()
+    public function formProyek($idProyek = null)
     {
-        return viewSA('dashboard/super/form_proyek');
+        $admin = $this->adminModel->getUsers();
+        $users = $this->clientModel->getUsers();
+        $data = [
+            'admin' => $admin,
+            'users' => $users,
+        ];
+        if ($idProyek) {
+            $proyek = $this->proyekModel->getProyekById($idProyek);
+            $data['proyek'] = $proyek;
+        }
+        return viewSA('dashboard/super/form_proyek', $data);
     }
 
     public function pembayaran($idProyek = null)

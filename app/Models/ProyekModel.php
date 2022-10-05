@@ -51,6 +51,21 @@ class ProyekModel extends Model
         $this->progress = $this->db->table('progress');
     }
 
+    public function addProyek($idCustomer, $idAdmin, $nama, $lokasi, $biaya, $tglMulai, $tglSelesai, $rab)
+    {
+        $this->proyek->insert([
+            'id_proyek' => 'proy-' . bin2hex(random_bytes(8)),
+            'id_customer' => $idCustomer,
+            'id_admin' => $idAdmin,
+            'nama' => $nama,
+            'lokasi_proyek' => $lokasi,
+            'biaya' => $biaya,
+            'tgl_mulai' => $tglMulai,
+            'tgl_selesai' => $tglSelesai,
+            'rab' => $rab,
+        ]);
+    }
+
     public function getProyek()
     {
         return $this->proyek
@@ -60,9 +75,21 @@ class ProyekModel extends Model
     public function getProyekWithOwner()
     {
         return $this->proyek
-            ->select('id_proyek, data_customer.nama AS nama_owner, data_admin.nama AS nama_pengawas, proyek.nama AS nama_proyek, lokasi_proyek')
+            ->select('proyek.id_admin, proyek.id_customer, proyek.biaya, proyek.tgl_mulai, proyek.tgl_selesai, id_proyek, data_customer.nama AS nama_owner, data_admin.nama AS nama_pengawas, proyek.nama AS nama_proyek, lokasi_proyek')
             ->join('data_customer', 'proyek.id_customer = data_customer.id_customer')
             ->join('data_admin', 'proyek.id_admin = data_admin.id_admin')
+            ->where(['status' => 'Dikerjakan'])
+            ->get()
+            ->getResultArray();
+    }
+
+    public function getProyekWithOwnerSelesai()
+    {
+        return $this->proyek
+            ->select('id_proyek, data_customer.nama AS nama_owner, data_admin.nama AS nama_pengawas, proyek.nama AS nama_proyek, lokasi_proyek, status')
+            ->join('data_customer', 'proyek.id_customer = data_customer.id_customer')
+            ->join('data_admin', 'proyek.id_admin = data_admin.id_admin')
+            ->where(['status !=' => 'Dikerjakan'])
             ->get()
             ->getResultArray();
     }
@@ -104,7 +131,7 @@ class ProyekModel extends Model
     public function getProyekById($idProyek)
     {
         return $this->proyek
-            ->select('id_proyek, data_customer.nama AS nama_owner, data_admin.nama AS nama_pengawas, proyek.nama AS nama_proyek, lokasi_proyek')
+            ->select('proyek.id_admin, proyek.id_customer, proyek.biaya, proyek.tgl_mulai, proyek.tgl_selesai, id_proyek, data_customer.nama AS nama_owner, data_admin.nama AS nama_pengawas, proyek.nama AS nama_proyek, lokasi_proyek, rab')
             ->join('data_customer', 'proyek.id_customer = data_customer.id_customer')
             ->join('data_admin', 'proyek.id_admin = data_admin.id_admin')
             ->where(['id_proyek' => $idProyek])
@@ -134,5 +161,53 @@ class ProyekModel extends Model
             ->get()
             ->getRowObject(0)
             ->anggaran;
+    }
+
+    public function editProyek($idProyek, $idCustomer, $idAdmin, $nama, $lokasi, $biaya, $tglMulai, $tglSelesai, $rab = null)
+    {
+        if ($rab) {
+            $this->proyek->update(
+                [
+                    'id_customer' => $idCustomer,
+                    'id_admin' => $idAdmin,
+                    'nama' => $nama,
+                    'lokasi_proyek' => $lokasi,
+                    'biaya' => $biaya,
+                    'tgl_mulai' => $tglMulai,
+                    'tgl_selesai' => $tglSelesai,
+                    'rab' => $rab,
+                ],
+                [
+                    'id_proyek' => $idProyek
+                ]
+            );
+        } else {
+            $this->proyek->update(
+                [
+                    'id_customer' => $idCustomer,
+                    'id_admin' => $idAdmin,
+                    'nama' => $nama,
+                    'lokasi_proyek' => $lokasi,
+                    'biaya' => $biaya,
+                    'tgl_mulai' => $tglMulai,
+                    'tgl_selesai' => $tglSelesai,
+                ],
+                [
+                    'id_proyek' => $idProyek
+                ]
+            );
+        }
+    }
+
+    public function updateStatusByProyekId($id, $status)
+    {
+        $this->proyek->update(
+            [
+                'status' => $status
+            ],
+            [
+                'id_proyek' => $id
+            ]
+        );
     }
 }

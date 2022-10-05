@@ -50,9 +50,12 @@ $routes->group('dashboard', function ($routes) {
     });
     $routes->group('sa', function ($routes) {
         $routes->get('/', 'SuperAdminDashboard::index');
-        $routes->get('proyek', 'SuperAdminDashboard::proyek');
-        $routes->get('proyek/(:any)', 'SuperAdminDashboard::proyek/$1');
-        $routes->get('proyek/(:any)/(:any)', 'SuperAdminDashboard::proyek/$1/$2');
+        $routes->group('proyek', function ($routes) {
+            $routes->get('edit/(:any)', 'SuperAdminDashboard::formProyek/$1');
+            $routes->get('add', 'SuperAdminDashboard::formProyek');
+            $routes->get('/', 'SuperAdminDashboard::proyek');
+            $routes->get('(:any)', 'SuperAdminDashboard::proyek/$1');
+        });
         $routes->get('pembayaran', 'SuperAdminDashboard::pembayaran');
         $routes->get('pembayaran/(:any)', 'SuperAdminDashboard::pembayaran/$1');
         $routes->get('portofolio', 'SuperAdminDashboard::portofolio');
@@ -89,8 +92,12 @@ $routes->group('action', function ($routes) {
     $routes->post('logout', 'Login::logout');
     $routes->group('proyek', function ($routes) {
         // SA
+        $routes->post('add', 'ActionProyek::addProyek');
+        $routes->post('edit', 'ActionProyek::editProyek');
+        $routes->post('update', 'ActionProyek::updateStatus');
         $routes->get('get', 'ActionProyek::getProyekWithOwner');
-        
+        $routes->get('get/selesai', 'ActionProyek::getProyekWithOwnerSelesai');
+
         $routes->post('card', 'ActionProyek::getCardData');
         $routes->get('/', 'ActionProyek::getProyek');
         $routes->get('(:any)', 'ActionProyek::getProyek/$1');

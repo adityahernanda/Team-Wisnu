@@ -14,17 +14,16 @@
         <div class="card shadow mb-4 gap-3">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="progressTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>No.</th>
                                 <th>Nama Progress</th>
                                 <th>Tanggal</th>
                                 <th>Keterangan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <!-- <tbody>
                             <tr>
                                 <td>1</td>
                                 <td>Progress 1</td>
@@ -45,14 +44,47 @@
                                     <a href="<?= base_url('/dashboard/sa/proyek/idOwner/idProyek/idProgress') ?>" class="btn btn-primary">Detail</a>
                                 </td>
                             </tr>
-                        </tbody>
+                        </tbody> -->
                     </table>
                 </div>
             </div>
         </div>
     </div>
-
-
+    <?php
+    $uri = service('uri');
+    $idProyek = $uri->getSegment(4);
+    ?>
+    <script>
+        $('#progressTable').DataTable({
+            ajax: {
+                url: '/action/progress',
+                method: 'POST',
+                data: {
+                    id: '<?= $idProyek ?>'
+                }
+            },
+            columns: [{
+                    data: "nama"
+                },
+                {
+                    data: "tgl_progress"
+                },
+                {
+                    data: "keterangan"
+                },
+                {
+                    data: "id_progress",
+                    render: (data) => {
+                        return `
+                            <td>
+                                <a href="<?= base_url('/dashboard/sa/proyek/' . $idProyek) ?>/${data}" class="btn btn-primary">Detail</a>
+                            </td>
+                    `;
+                    }
+                },
+            ]
+        });
+    </script>
 </div>
 <!-- /.container-fluid -->
 <?= $this->endSection() ?>

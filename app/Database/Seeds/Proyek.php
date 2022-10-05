@@ -19,7 +19,7 @@ class Proyek extends Seeder
                 "status" => "Dikerjakan",
                 "tgl_mulai" => "2022-10-1",
                 "tgl_selesai" => "2022-12-1",
-                "rab" => "no",
+                "rab" => "RAB.xlsx",
             ],
             [
                 "id_proyek" => "proy-666",
@@ -31,7 +31,7 @@ class Proyek extends Seeder
                 "tgl_mulai" => "2022-10-1",
                 "tgl_selesai" => "2022-12-1",
                 "status" => "Selesai",
-                "rab" => "no",
+                "rab" => "RAB.xlsx",
             ],
             [
                 "id_proyek" => "proy-111",
@@ -43,7 +43,7 @@ class Proyek extends Seeder
                 "tgl_mulai" => "2022-10-1",
                 "tgl_selesai" => "2022-12-1",
                 "status" => "Cancelled",
-                "rab" => "no",
+                "rab" => "RAB.xlsx",
             ],
         ];
         $this->db->table('proyek')->insertBatch($data);

@@ -56,6 +56,7 @@ class ActionProyek extends BaseController
             $tgl_selesai,
             $rabName
         );
+        session()->setFlashdata("sukses", true);
         $this->response->redirect('/dashboard/sa/proyek');
     }
 
@@ -97,6 +98,7 @@ class ActionProyek extends BaseController
                 $tgl_selesai
             );
         }
+        session()->setFlashdata("sukses", true);
         $this->response->redirect('/dashboard/sa/proyek');
     }
 
@@ -150,6 +152,7 @@ class ActionProyek extends BaseController
             $this->modelFoto->addFoto($idProgress, $imgName);
         }
 
+        session()->setFlashdata("sukses", true);
         $this->response->redirect('/dashboard/admin/proyek/' . $idProyek);
     }
 
@@ -186,6 +189,7 @@ class ActionProyek extends BaseController
             $ket
         );
 
+        session()->setFlashdata("sukses", true);
         $this->response->redirect('/dashboard/admin/proyek/' . $idProyek);
     }
 
@@ -230,6 +234,7 @@ class ActionProyek extends BaseController
             $id,
             $status
         );
+        session()->setFlashdata("sukses", true);
         $this->response->redirect('/dashboard/sa/proyek');
     }
 }

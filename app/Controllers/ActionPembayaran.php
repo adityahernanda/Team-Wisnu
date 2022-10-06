@@ -44,6 +44,7 @@ class ActionPembayaran extends BaseController
             $jumlah,
             $ket,
         );
+        session()->setFlashdata("sukses", true);
         $this->response->redirect('/dashboard/sa/pembayaran/' . $idProyek);
     }
 
@@ -62,6 +63,7 @@ class ActionPembayaran extends BaseController
         $idProyek = $this->request->getVar('id_proyek');
         $id = $this->request->getVar('id');
         $this->modelPembayaran->deletePembayaranById($id);
+        session()->setFlashdata("sukses", true);
         $this->response->redirect('/dashboard/sa/pembayaran/' . $idProyek);
     }
 }

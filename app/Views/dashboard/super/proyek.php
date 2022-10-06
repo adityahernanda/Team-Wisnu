@@ -96,6 +96,17 @@
         </div>
     </div>
     <script>
+        <?php if (session()->getFlashdata("sukses")) : ?>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Sukses!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        <?php endif; ?>
+    </script>
+    <script>
         function updateModal(id, nama) {
             $('#proyekId').val(id);
             $('#proyekNama').html(nama);

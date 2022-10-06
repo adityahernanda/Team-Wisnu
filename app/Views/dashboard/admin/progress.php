@@ -52,6 +52,16 @@ if (isset($proyek)) {
     $idProyek = $uri->getSegment(4);
     ?>
     <script>
+        <?php if (session()->getFlashdata("sukses")) : ?>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Sukses!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        <?php endif; ?>
+
         $('#progressTable').DataTable({
             ajax: {
                 url: '/action/progress',

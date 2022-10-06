@@ -26,6 +26,7 @@ class ActionAdmin extends BaseController
             $email,
             $hp
         );
+        session()->setFlashdata("sukses", true);
         $this->response->redirect('/dashboard/sa/pengguna');
     }
 
@@ -50,6 +51,7 @@ class ActionAdmin extends BaseController
             $email,
             $hp
         );
+        session()->setFlashdata("sukses", true);
         $this->response->redirect('/dashboard/sa/pengguna');
     }
 
@@ -59,6 +61,7 @@ class ActionAdmin extends BaseController
         $this->adminModel->deleteUserByEmail(
             $email
         );
+        session()->setFlashdata("sukses", true);
         $this->response->redirect('/dashboard/sa/pengguna');
     }
 }

@@ -24,6 +24,7 @@ class ActionPortofolio extends BaseController
             $gbrName,
             $ket
         );
+        session()->setFlashdata("sukses", true);
         $this->response->redirect('/dashboard/sa/portofolio');
     }
 
@@ -55,6 +56,7 @@ class ActionPortofolio extends BaseController
                 $ket
             );
         }
+        session()->setFlashdata("sukses", true);
         $this->response->redirect('/dashboard/sa/portofolio');
     }
 
@@ -67,6 +69,7 @@ class ActionPortofolio extends BaseController
         $this->model->deletePortofolio(
             $id
         );
+        session()->setFlashdata("sukses", true);
         $this->response->redirect('/dashboard/sa/portofolio');
     }
 }

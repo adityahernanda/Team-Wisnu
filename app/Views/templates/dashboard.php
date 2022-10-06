@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Team Wisnu - Dashboard</title>
+    <title>Team Wisnu - <?= $title ?></title>
 
     <!-- Custom fonts for this template -->
     <link href="<?= base_url('assets/sb_admin/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">

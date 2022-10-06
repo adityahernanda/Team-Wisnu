@@ -21,6 +21,7 @@ class AdminDashboard extends BaseController
     {
         $proyek = $this->modelProyek->getProyekByIdAdmin($_SESSION['id']);
         $data = [
+            "title" => "Dashboard",
             'proyek' => $proyek
         ];
         return viewAdmin('dashboard/admin/main', $data);
@@ -28,10 +29,14 @@ class AdminDashboard extends BaseController
 
     public function proyek($idProyek = null, $idProgress = null)
     {
+        $data = [
+            "title" => "Proyek",
+        ];
         if ($idProyek && $idProgress) {
             $progress = $this->modelProyek->getProgressById($idProgress);
             $foto = $this->modelFoto->getFotoByProgressId($idProgress);
             $data = [
+                "title" => "Detail Progress",
                 'progress' => $progress,
                 'foto' => $foto,
             ];
@@ -39,17 +44,19 @@ class AdminDashboard extends BaseController
         } else if ($idProyek) {
             $proyek =  $this->modelProyek->getProyekById($idProyek);
             $data = [
+                "title" => "Progress",
                 'proyek' => $proyek
             ];
             return viewAdmin('dashboard/admin/progress', $data);
         }
-        return viewAdmin('dashboard/admin/proyek');
+        return viewAdmin('dashboard/admin/proyek',$data);
     }
 
     public function formProgress($idProgress = null)
     {
         $progress = $this->modelProyek->getProgressById($idProgress);
         $data = [
+            "title" => "Form Progress",
             'progress' => $progress
         ];
         return viewAdmin('dashboard/admin/form_progress', $data);
@@ -57,6 +64,9 @@ class AdminDashboard extends BaseController
 
     public function profile()
     {
-        return viewAdmin('dashboard/admin/profile');
+        $data = [
+            "title" => "Profile",
+        ];
+        return viewAdmin('dashboard/admin/profile',$data);
     }
 }

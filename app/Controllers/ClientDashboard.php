@@ -23,6 +23,7 @@ class ClientDashboard extends BaseController
     {
         $proyek = $this->modelProyek->getProyekByIdCustomer($_SESSION['id']);
         $data = [
+            "title" => "Dashboard",
             "proyek" => $proyek
         ];
         return viewClient('dashboard/client/main', $data);
@@ -30,11 +31,15 @@ class ClientDashboard extends BaseController
 
     public function proyek($idProyek = null, $idProgress = null)
     {
+        $data = [
+            "title" => "Proyek",
+        ];
         if ($idProyek && $idProgress) {
             $progress = $this->modelProyek->getProgressById($idProgress);
             if ($progress && $idProyek == $progress->id_proyek) {
                 $foto = $this->modelFoto->getFotoByProgressId($idProgress);
                 $data = [
+                    "title" => "Detail Progress",
                     'progress' => $progress,
                     'foto' => $foto
                 ];
@@ -43,15 +48,19 @@ class ClientDashboard extends BaseController
                 return $this->response->redirect('/dashboard/client/proyek/' . $idProyek);
             }
         } else if ($idProyek) {
-            return viewClient('dashboard/client/progress');
+            $data = [
+                "title" => "Progress",
+            ];
+            return viewClient('dashboard/client/progress', $data);
         }
-        return viewClient('dashboard/client/proyek');
+        return viewClient('dashboard/client/proyek', $data);
     }
 
     public function pembayaran()
     {
         $proyek = $this->modelProyek->getProyekByIdCustomer($_SESSION['id']);
         $data = [
+            "title" => "Pembayaran",
             "proyek" => $proyek
         ];
         return viewClient('dashboard/client/pembayaran', $data);
@@ -59,6 +68,9 @@ class ClientDashboard extends BaseController
 
     public function profile()
     {
-        return viewClient('dashboard/client/profile');
+        $data = [
+            "title" => "Profile",
+        ];
+        return viewClient('dashboard/client/profile', $data);
     }
 }

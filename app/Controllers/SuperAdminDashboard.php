@@ -25,6 +25,7 @@ class SuperAdminDashboard extends BaseController
     public function index()
     {
         $data = [
+            "title" => "Dashboard",
             "proyek" => $this->proyekModel->getProyekWithOwner(),
             "admin" => sizeof($this->adminModel->getUsers()),
             "client" => sizeof($this->clientModel->getUsers()),
@@ -34,18 +35,25 @@ class SuperAdminDashboard extends BaseController
 
     public function proyek($idProyek = null, $idProgress = null)
     {
+        $data = [
+            "title" => "Proyek",
+        ];
         if ($idProyek && $idProgress) {
             $progress = $this->proyekModel->getProgressById($idProgress);
             $foto = $this->fotoModel->getFotoByProgressId($idProgress);
             $data = [
+                "title" => "Detail Progress",
                 'progress' => $progress,
                 'foto' => $foto,
             ];
             return viewSA('dashboard/super/detail_progress', $data);
         } else if ($idProyek) {
-            return viewSA('dashboard/super/progress');
+            $data = [
+                "title" => "Progress",
+            ];
+            return viewSA('dashboard/super/progress', $data);
         }
-        return viewSA('dashboard/super/proyek');
+        return viewSA('dashboard/super/proyek', $data);
     }
 
     public function formProyek($idProyek = null)
@@ -53,6 +61,7 @@ class SuperAdminDashboard extends BaseController
         $admin = $this->adminModel->getUsers();
         $users = $this->clientModel->getUsers();
         $data = [
+            "title" => "Form Proyek",
             'admin' => $admin,
             'users' => $users,
         ];
@@ -65,28 +74,38 @@ class SuperAdminDashboard extends BaseController
 
     public function pembayaran($idProyek = null)
     {
+        $data = [
+            "title" => "Pembayaran",
+        ];
         if ($idProyek) {
             $proyek = $this->proyekModel->getProyekById($idProyek);
-            $data = [
-                'proyek' => $proyek
-            ];
+            $data['proyek'] = $proyek;
             return viewSA('dashboard/super/pembayaran_proyek', $data);
         }
-        return viewSA('dashboard/super/pembayaran');
+        return viewSA('dashboard/super/pembayaran', $data);
     }
 
     public function portofolio()
     {
-        return viewSA('dashboard/super/portofolio');
+        $data = [
+            "title" => "Portofolio",
+        ];
+        return viewSA('dashboard/super/portofolio', $data);
     }
 
     public function pengguna()
     {
-        return viewSA('dashboard/super/pengguna');
+        $data = [
+            "title" => "Pengguna",
+        ];
+        return viewSA('dashboard/super/pengguna', $data);
     }
 
     public function profile()
     {
-        return viewSA('dashboard/super/profile');
+        $data = [
+            "title" => "Profile",
+        ];
+        return viewSA('dashboard/super/profile', $data);
     }
 }

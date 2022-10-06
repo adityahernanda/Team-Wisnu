@@ -7,6 +7,8 @@ function renderCard(res) {
   $("#anggaran").html(formatRupiah(obj.anggaran));
   $("#terbayar").html(formatRupiah(obj.terbayar));
   $("#kekurangan").html(formatRupiah(obj.kekurangan));
+  $("#rabDownload").attr("download", "RAB " + obj.proyek.nama_proyek);
+  $("#rabDownload").attr("href", "http://localhost:8080/uploads/rab/" + obj.proyek.rab);
 }
 
 let pembayaranTable = $("#pembayaranTable").DataTable({

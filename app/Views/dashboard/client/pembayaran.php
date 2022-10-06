@@ -111,21 +111,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- 
-                                <tr>
-                                    <td>1</td>
-                                    <td>2011/04/25</td>
-                                    <td>5.000.000</td>
-                                    <td>Bayar dana tukang</td>
-                                </tr>
-                                -->
+                                
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
             <p>File Rancang Bangunan</p>
-            <a href="" class="btn btn-outline-primary mb-4">Unduh</a>
+            <a id="rabDownload" class="btn btn-outline-primary mb-4">Unduh</a>
         </div>
     </div>
     <script src="<?= base_url('/assets/js/client/pembayaran.js') ?>" type="module"></script>

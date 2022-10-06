@@ -85,7 +85,7 @@
                     <table class="table table-bordered" id="adminTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Username</th>
+                                <th>Nama</th>
                                 <th>Email</th>
                                 <th>Telepon</th>
                                 <th>Aksi</th>

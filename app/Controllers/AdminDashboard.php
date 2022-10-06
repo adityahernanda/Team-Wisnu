@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\DataAdminModel;
 use App\Models\FotoModel;
 use App\Models\ProyekModel;
 
@@ -10,11 +11,13 @@ class AdminDashboard extends BaseController
 {
     protected $modelProyek;
     protected $modelFoto;
+    protected $modelAdmin;
 
     public function __construct()
     {
         $this->modelProyek = new ProyekModel();
         $this->modelFoto = new FotoModel();
+        $this->modelAdmin = new DataAdminModel();
     }
 
     public function index()
@@ -49,7 +52,7 @@ class AdminDashboard extends BaseController
             ];
             return viewAdmin('dashboard/admin/progress', $data);
         }
-        return viewAdmin('dashboard/admin/proyek',$data);
+        return viewAdmin('dashboard/admin/proyek', $data);
     }
 
     public function formProgress($idProgress = null)
@@ -64,9 +67,11 @@ class AdminDashboard extends BaseController
 
     public function profile()
     {
+        $profile = $this->modelAdmin->getUserDataById($_SESSION['id']);
         $data = [
             "title" => "Profile",
+            "profile" => $profile,
         ];
-        return viewAdmin('dashboard/admin/profile',$data);
+        return viewAdmin('dashboard/admin/profile', $data);
     }
 }

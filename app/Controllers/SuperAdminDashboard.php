@@ -103,8 +103,10 @@ class SuperAdminDashboard extends BaseController
 
     public function profile()
     {
+        $profile = $this->adminModel->getUserDataById($_SESSION['id']);
         $data = [
             "title" => "Profile",
+            "profile" => $profile,
         ];
         return viewSA('dashboard/super/profile', $data);
     }

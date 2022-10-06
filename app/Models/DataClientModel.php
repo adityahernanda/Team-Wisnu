@@ -59,6 +59,14 @@ class DataClientModel extends Model
             ->getRowObject(0);
     }
 
+    public function getUserDataById($id)
+    {
+        return $this->tableData
+            ->where(["id_customer" => $id])
+            ->get()
+            ->getRowObject(0);
+    }
+
     public function addUser($nama, $pass, $email, $hp)
     {
         $this->tableLogin->insert([
@@ -96,7 +104,7 @@ class DataClientModel extends Model
             ->getRowObject(0)
             ->password;
 
-        if ($email) {
+        if ($email && ($email !== $oldEmail)) {
             $this->tableLogin->insert([
                 'email' => $email,
                 'password' => $pass ? password_hash($pass, PASSWORD_BCRYPT) : $oldPass

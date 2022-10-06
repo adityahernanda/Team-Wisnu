@@ -125,6 +125,10 @@ $routes->group('action', function ($routes) {
         $routes->post('add', 'ActionPembayaran::addPembayaran');
         $routes->post('delete', 'ActionPembayaran::deletePembayaranById');
     });
+    $routes->group('profile', function ($routes) {
+        $routes->post('client', 'ActionProfile::editClientById');
+        $routes->post('admin', 'ActionProfile::editAdminById');
+    });
 });
 /*
  * --------------------------------------------------------------------

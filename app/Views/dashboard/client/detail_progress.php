@@ -22,12 +22,6 @@
                             <label for="tanggalProgress">Tanggal Progress</label>
                             <input type="date" class="form-control" id="tanggalProgress" value="<?= $progress->tgl_progress ?>" readonly>
                         </div>
-                        <?php helper('format_helper'); ?>
-                        <div class="form-group">
-                            <label for="biayaKeluar">Biaya Keluar</label>
-                            <input type="text" class="form-control" id="biayaKeluar" aria-describedby="biayaKeluar" value="<?= rupiah($progress->biaya) ?>" readonly>
-
-                        </div>
                         <div class="form-group">
                             <label for="presentaseKerja">Presentase Pekerjaan (%)</label>
                             <input type="text" class="form-control" id="presentaseKerja" aria-describedby="presentaseKerja" value="<?= $progress->presentase ?>" readonly>
@@ -48,24 +42,11 @@
                     <h6 class="m-0 font-weight-bold text-primary">Foto Proyek</h6>
                 </div>
                 <div class="card-body">
-                    <a href="<?= base_url('assets/img/portofolio 1.jpg') ?>" data-lightbox="roadtrip">
-                        <img class="mb-3" src="<?= base_url('assets/img/portofolio 1.jpg') ?>" width="100" height="100" alt="">
-                    </a>
-                    <a href="<?= base_url('assets/img/portofolio 2.jpg') ?>" data-lightbox="roadtrip">
-                        <img class="mb-3" src="<?= base_url('assets/img/portofolio 2.jpg') ?>" width="100" height="100" alt="">
-                    </a>
-                    <a href="<?= base_url('assets/img/portofolio 4.jpg') ?>" data-lightbox="roadtrip">
-                        <img class="mb-3" src="<?= base_url('assets/img/portofolio 4.jpg') ?>" width="100" height="100" alt="">
-                    </a>
-                    <a href="<?= base_url('assets/img/portofolio 5.jpg') ?>" data-lightbox="roadtrip">
-                        <img class="mb-3" src="<?= base_url('assets/img/portofolio 5.jpg') ?>" width="100" height="100" alt="">
-                    </a>
-                    <a href="<?= base_url('assets/img/portofolio 6.jpg') ?>" data-lightbox="roadtrip">
-                        <img class="mb-3" src="<?= base_url('assets/img/portofolio 6.jpg') ?>" width="100" height="100" alt="">
-                    </a>
-                    <a href="<?= base_url('assets/img/portofolio 4.jpg') ?>" data-lightbox="roadtrip">
-                        <img class="mb-3" src="<?= base_url('assets/img/portofolio 4.jpg') ?>" width="100" height="100" alt="">
-                    </a>
+                    <?php foreach ($foto as $row) : ?>
+                        <a href="<?= base_url('uploads/progress/' . $row['url_foto']) ?>" data-lightbox="roadtrip">
+                            <img class="mb-3" src="<?= base_url('uploads/progress/' . $row['url_foto']) ?>" width="100" height="100" alt="">
+                        </a>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

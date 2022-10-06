@@ -116,11 +116,11 @@ class ActionProyek extends BaseController
         ]);
     }
 
-    public function getProyek($idCustomer = null)
+    public function getProyek($idCustomer = null, $status = null)
     {
         if ($idCustomer) {
             return json_encode([
-                "data" => $this->modelProyek->getProyekByIdCustomer($idCustomer)
+                "data" => $this->modelProyek->getProyekByIdCustomer($idCustomer, $status)
             ]);
         }
         return json_encode([

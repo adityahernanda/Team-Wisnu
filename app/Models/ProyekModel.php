@@ -112,11 +112,27 @@ class ProyekModel extends Model
             ->id_admin;
     }
 
-    public function getProyekByIdCustomer($idCustomer)
+    public function getProyekByIdCustomer($idCustomer, $status = null)
     {
-        return $this->proyek
-            ->where(['id_customer' => $idCustomer])
-            ->get()->getResultArray();
+        if ($status) {
+            return $this->proyek
+                ->select('id_proyek, data_admin.nama AS nama_admin, proyek.nama, lokasi_proyek, tgl_mulai, tgl_selesai, status')
+                ->where([
+                    'id_customer' => $idCustomer,
+                    'status !=' => 'Dikerjakan',
+                ])
+                ->join('data_admin', 'data_admin.id_admin = proyek.id_admin')
+                ->get()->getResultArray();
+        } else {
+            return $this->proyek
+                ->select('id_proyek, data_admin.nama AS nama_admin, proyek.nama, lokasi_proyek, tgl_mulai, tgl_selesai, status')
+                ->where([
+                    'id_customer' => $idCustomer,
+                    'status' => 'Dikerjakan',
+                ])
+                ->join('data_admin', 'data_admin.id_admin = proyek.id_admin')
+                ->get()->getResultArray();
+        }
     }
 
     public function getProyekByIdAdmin($idAdmin, $status = null)

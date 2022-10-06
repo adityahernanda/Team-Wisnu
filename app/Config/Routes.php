@@ -103,6 +103,7 @@ $routes->group('action', function ($routes) {
         $routes->post('card', 'ActionProyek::getCardData');
         $routes->get('/', 'ActionProyek::getProyek');
         $routes->get('(:any)', 'ActionProyek::getProyek/$1');
+        $routes->get('(:any)/riwayat', 'ActionProyek::getProyek/$1/$2');
         $routes->post('admin', 'ActionProyek::getProyekByIdAdmin');
     });
     $routes->group('portofolio', function ($routes) {

@@ -20,7 +20,6 @@
                             <!-- <th>No.</th> -->
                             <th>Nama Progress</th>
                             <th>Tanggal Progress</th>
-                            <th>Biaya Keluar</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -49,12 +48,6 @@
                 },
                 {
                     data: "tgl_progress"
-                },
-                {
-                    data: "biaya",
-                    render: (data) => {
-                        return formatRupiah(data);
-                    }
                 },
                 {
                     data: "id_progress",

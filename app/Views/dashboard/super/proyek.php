@@ -160,7 +160,7 @@
                     data: 'id_proyek',
                     render: (data) => {
                         return `
-                            <a href="<?= base_url('/dashboard/sa/proyek/idOwner/idProyek/idProgress') ?>" class="btn btn-primary">Detail</a>
+                            <a href="<?= base_url('/dashboard/sa/proyek') ?>/${data}" class="btn btn-primary">Detail</a>
                         `;
                     }
                 },
